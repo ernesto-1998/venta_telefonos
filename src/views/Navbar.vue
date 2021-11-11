@@ -10,18 +10,21 @@
           class="mx-3 col-8"
           style="border-radius: 50px; width: 300px"
         />
-        <a href="#" class="btn btn-warning border border-3 border-dark mx-3"
+        <!-- <a :href="" class="btn btn-warning border border-3 border-dark mx-3"
           ><b>Inicio</b></a
-        >
+        > -->
+        <router-link :to="{name : 'Home'}" class="btn btn-warning border border-3 border-dark mx-3">
+          <b>Inicio</b>
+          </router-link>
         <a href="#" class="btn btn-warning border border-3 border-dark mx-2"
           ><b>Estadísticas</b></a
         >
-        <a href="#">
+        <router-link :to="{name : 'nuevoAnuncio'}">
           <i
             class="bi bi-plus-circle ms-5"
             style="font-size: 3rem; color: black"
-          ></i>
-        </a>
+          ></i>          
+        </router-link>
         <a href="#">
           <i
             class="bi bi-cart-fill ms-3"
@@ -43,7 +46,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
-        <!-- <div class="col-8">
+        <div class="col-8">
           <form class="d-flex">
             <input
               class="form-control me-2"
@@ -54,7 +57,7 @@
               style="border-radius: 25px"
             />
           </form>
-        </div> -->
+        </div>
       </div>
       <div id="menuNavegacion" class="collapse navbar-collapse">
         <ul class="navbar-nav ms-3 d-lg-none d-md-none" id="navbarBotones">
@@ -73,11 +76,12 @@
         </ul>
       </div>
     </div>
-    <button @click="pintarData">Hola</button>
   </nav>
 </template>
 
 <script>
+import {bus} from '../main'
+
 export default {
     name: 'Navbar',
 
@@ -87,8 +91,10 @@ export default {
         };
     },
     methods: {
-        pintarData(){
-            console.log(this.texto)
+        filtrarAnuncios(){
+            if(this.texto){
+              bus.$emit('buscarCard', this.texto)
+            }
         }
     }
 }
