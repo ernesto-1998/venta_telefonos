@@ -124,20 +124,30 @@ export default {
     methods:{
       validarObjeto(){
         if(!this.telefono.estado || !this.telefono.marca || !this.telefono.modelo || this.telefono.pantalla <= 0 || !this.telefono.sistema || this.telefono.rom <= 0 || this.telefono.ram <= 0){
-          return false
+          // return false
+          return alert("No ha llenado todos los datos del telefono")
         }else{
-          return true
+          // return true
+          console.log("1")
+          // bus.$emit('enviarTelefono', this.telefono)
         }
       },
 
-      enviarData(){
-        if(this.validarObjeto()){
-          bus.$emit('enviarTelefono', this.telefono)
-        }else{
-          alert("No ha llenado toda la informacion o esta es incorrecta")
-        }
-      }
-    }
+
+      // enviarData(){
+      //   if(this.validarObjeto()){
+      //     bus.$emit('enviarTelefono', this.telefono)
+      //   }else{
+      //     alert("No ha llenado toda la informacion o esta es incorrecta")
+      //   }
+      // }
+    },
+    mounted() {
+      bus.$on('activarLlamada', ()=>{
+        bus.$emit('enviarTelefono', this.telefono)
+        this.validarObjeto()
+      })
+    },    
 };
 </script>
 

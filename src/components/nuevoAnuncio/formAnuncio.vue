@@ -58,9 +58,8 @@
         <router-link :to="{name: 'Home'}" class="btn btn-danger btn-lg">Cancelar</router-link>
       </div>
       <div class="col">
-        <!-- <a :click="pruebaTraer()" :href="{name: 'Home'}" class="btn btn-primary btn-lg">Crear</a> -->
-        <!-- <router-link :click="pruebaTraer()" :to="{name: 'Home'}" class="btn btn-primary btn-lg">Crear</router-link> -->
-        <router-link :to="{name: 'Home'}"><button class="btn btn-primary btn-lg" @click="pruebaTraer()">Crear</button></router-link>
+        <!-- <router-link :to="{name: 'Home'}"><button class="btn btn-primary btn-lg" @click="pruebaTraer()">Crear</button></router-link> -->
+        <button class="btn btn-primary btn-lg" @click="pruebaTraer()">Crear</button>
       </div>
     </div>
   </div>
@@ -83,19 +82,23 @@ export default {
             }
         };
     },
-    // methods: {
-    //   pruebaTraer(){
-    //     bus.$on('enviarTelefono', (data) =>{
-    //       console.log(data)
-    //     })
-        
-    //   }
-    // }
-    mounted(){
-      bus.$on('enviarTelefono', (data) =>{
-          console.log(data)
-         })
+    methods: {
+    pruebaTraer(){
+        bus.$emit('activarLlamada')
+        console.log("2")
+        bus.$on('enviarTelefono', (data) =>{
+          console.log("3")
+          this.anuncio.telefono = data
+          console.log(this.anuncio)
+        })
+        // console.log("Veamos si llega hasta aqui")
+      }
     }
+    // mounted(){
+    //   bus.$on('enviarTelefono', (data) =>{
+    //       console.log(data)
+    //      })
+    // }
 };
 </script>
 

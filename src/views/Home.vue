@@ -15,7 +15,6 @@
 
 <script>
 import conditionalMenu from '@/components/home/conditionalMenu'
-import ConditionalMenu from '../components/home/conditionalMenu.vue'
 
 
 export default {
@@ -26,4 +25,4 @@ export default {
 }
 </script>
 
-    ConditionalMenu
+  
