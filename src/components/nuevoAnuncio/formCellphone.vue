@@ -32,7 +32,6 @@
             <label class="form-check-label" for="inlineRadio2">Usado</label>
           </div>
         </div>
-        {{telefono.estado}}
       </div>
 
       <div class="row mt-3">
@@ -68,6 +67,7 @@
         </div>
         <div class="col d-flex justify-content-center">
           <select
+            v-model="telefono.sistema"
             class="form-select"
             style="width: 160px"
             aria-label="Default select example"
@@ -99,6 +99,7 @@
         </div>
       </div>
     </div>
+    <button class="btn btn-primay btn-lg" @click="enviarData()">Mandar</button>
   </div>
 </template>
 

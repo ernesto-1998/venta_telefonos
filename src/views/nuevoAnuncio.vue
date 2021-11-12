@@ -34,7 +34,6 @@ export default {
     }
 }
 </script>
-<s
-        FormCellphonetyle lang="">
+<style lang="scope">
     
 </style>

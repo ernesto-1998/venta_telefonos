@@ -58,8 +58,9 @@
         <router-link :to="{name: 'Home'}" class="btn btn-danger btn-lg">Cancelar</router-link>
       </div>
       <div class="col">
-        <!-- <a onclick="mostrar()" class="btn btn-primary btn-lg">Crear</a> -->
-        <router-link :to="{name: 'Home'}" class="btn btn-primary btn-lg">Crear</router-link>
+        <!-- <a :click="pruebaTraer()" :href="{name: 'Home'}" class="btn btn-primary btn-lg">Crear</a> -->
+        <!-- <router-link :click="pruebaTraer()" :to="{name: 'Home'}" class="btn btn-primary btn-lg">Crear</router-link> -->
+        <router-link :to="{name: 'Home'}"><button class="btn btn-primary btn-lg" @click="pruebaTraer()">Crear</button></router-link>
       </div>
     </div>
   </div>
@@ -81,6 +82,19 @@ export default {
                 telefono:{}
             }
         };
+    },
+    // methods: {
+    //   pruebaTraer(){
+    //     bus.$on('enviarTelefono', (data) =>{
+    //       console.log(data)
+    //     })
+        
+    //   }
+    // }
+    mounted(){
+      bus.$on('enviarTelefono', (data) =>{
+          console.log(data)
+         })
     }
 };
 </script>
