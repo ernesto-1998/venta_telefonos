@@ -66,6 +66,7 @@
 </template>
 
 <script>
+import {bus} from '@/main'
 
 export default {
     name: 'formAnuncio',
@@ -77,9 +78,7 @@ export default {
                 telefonoContacto: "",
                 descripcion: "",
                 precio: "",
-                telefono:{
-
-                }
+                telefono:{}
             }
         };
     }
