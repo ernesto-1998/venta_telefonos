@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-light bg-warning">
+  <nav class="navbar navbar-light color-fondo">
     <div class="container-fluid d-none d-md-block">
       <div class="d-flex align-items-center">
         <i class="bi bi-megaphone-fill mx-3" style="font-size: 2rem"></i>
@@ -99,3 +99,10 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+  .color-fondo{
+    background-color: #ffcc35; 
+    border: 10px ridge #ffcc25;
+  }
+</style>

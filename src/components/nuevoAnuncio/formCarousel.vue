@@ -1,8 +1,8 @@
 <template>
-  <div class="col" style="background-color: #ffcc50; border: 10px ridge #ffcc50; padding-top: 15px;">
-    <div class="container">
+  <div class="col">
+    <div class="container color-fondo">
 
-        <div class="row">
+        <div class="row mt-3">
 
             <!-- COLUMNA 1 (BOTONES) -->
 
@@ -28,7 +28,7 @@
 
             <!-- COLUMNA 2 (REFERENCIAS DE IMAGENES) -->
 
-            <div class="col-3">
+            <div class="col">
 
                 <table class="table table-borderless">
                                 <thead>
@@ -66,54 +66,21 @@
             <!-- COLUMNA 3 (CAROUSEL) -->
 
             <div class="col">
-                
-                <div
-                    v-if="imagenes.lenght !== 0"
-                    id="carouselExampleInterval"
-                    class="carousel slide"                        
-                    data-bs-ride="carousel"
-                    >
-                        <div class="carousel-inner">
-                            <div
-                                v-for="(img, index) in imagenes"
-                                :key="index"
-                                class="carousel-item"
-                                :class="{ active: index == 0 }"
-                                data-bs-interval="10000"
-                            >
-                                <img
-                                    :src="img"
-                                    
-                                    height="300"
-                                    class="d-block w-100"
-                                    alt=""
-                                />
-                            </div>
+
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div v-for="(img, index) in imagenes" :key="index" class="carousel-item" :class="{ active: index==0 }">
+                            <img :src="img" class="d-block w-100" alt="...">
                         </div>
-                        <button
-                            class="carousel-control-prev"
-                            type="button"
-                            data-bs-target="#carouselExampleInterval"
-                            data-bs-slide="prev"
-                            >
-                            <span
-                                class="carousel-control-prev-icon"
-                                aria-hidden="true"
-                            ></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button
-                            class="carousel-control-next"
-                            type="button"
-                            data-bs-target="#carouselExampleInterval"
-                            data-bs-slide="next"
-                        >
-                        <span
-                            class="carousel-control-next-icon"
-                            aria-hidden="true"
-                        ></span>
-                        <span class="visually-hidden">Next</span>
-                        </button>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
 
             </div>
@@ -142,5 +109,11 @@ export default {
   },
 };
 </script>
-<style lang="scoped">
+<style scoped>
+
+  .color-fondo{
+    background-color: #ffcc35; 
+    border: 10px ridge #ffcc25;
+  }
+
 </style>
