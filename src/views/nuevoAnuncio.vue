@@ -249,6 +249,7 @@ export default {
 //   },
   data(){
       return{
+            id_anuncio: "",
             anuncio: {
                 titulo: "",
                 nombre: "",
@@ -288,7 +289,8 @@ export default {
           if(this.validarTelefono() === true && this.validarAnuncio() === true){
               try {
                   const query = await db.collection("anuncios").add(this.anuncio);
-                  console.log("El siguiente anuncio ha sido agregado exitosamente", query)
+                  console.log("El siguiente anuncio ha sido agregado exitosamente", query.data)
+                  this.id_anuncio = query.id
               } catch (error) {
                   console.log(error)
               }
