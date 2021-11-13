@@ -137,7 +137,7 @@
         </div>
         <div class="row">
 
-
+          <form-carousel/>
 
         </div>
       </div>
@@ -237,9 +237,10 @@
 </template>
 
 <script>
-import {db} from "../firebase"
+import {db, st} from "../firebase"
 // import formCellphone from "@/components/nuevoAnuncio/formCellphone";
 // import formAnuncio from "@/components/nuevoAnuncio/formAnuncio";
+import formCarousel from "../components/nuevoAnuncio/formCarousel.vue";
 
 export default {
   name: "nuevoAnuncio",
@@ -247,6 +248,9 @@ export default {
 //     formCellphone,
 //     formAnuncio,
 //   },
+    components:{
+      formCarousel
+    },
   data(){
       return{
             id_anuncio: "",
