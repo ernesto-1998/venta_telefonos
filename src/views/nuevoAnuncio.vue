@@ -135,7 +135,10 @@
 
           <!-- FINAL DEL PRIMER CUADRANTE -->
         </div>
-        <div class="row">
+
+        <!-- SEGUNDO CUANDRANTE -->
+
+        <div class="row pt-3">
 
           <form-carousel/>
 
