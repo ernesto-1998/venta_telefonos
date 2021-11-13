@@ -3,7 +3,7 @@
 
   <div class="container mt-3">
     <div class="row">
-      <div class="col">
+      <div class="col-md-6">
         <div class="row">
 
           <!-- PRIMER CUADRANTE (TELEFONO) -->
@@ -135,9 +135,13 @@
 
           <!-- FINAL DEL PRIMER CUADRANTE -->
         </div>
-        <div class="row"></div>
+        <div class="row">
+
+
+
+        </div>
       </div>
-      <div class="col">
+      <div class="col px-4 px-md-0">
         <div class="row">
 
           <!-- TERCER CUADRANTE (ANUNCIO) -->
