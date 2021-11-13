@@ -6,55 +6,55 @@
 
         <div class="col-12">
             <div class="row">
-            <div
-                v-if="imagenes.lenght !== 0"
-                id="carouselExampleInterval"
-                class="carousel slide"
-                
-                data-bs-ride="carousel"
-            >
-                <div class="carousel-inner">
                 <div
-                    v-for="(img, index) in imagenes"
-                    :key="index"
-                    class="carousel-item"
-                    :class="{ active: index == 0 }"
-                    data-bs-interval="10000"
-                >
-                    <img
-                    :src="img"
+                    v-if="imagenes.lenght !== 0"
+                    id="carouselExampleInterval"
+                    class="carousel slide"
                     
-                    height="300"
-                    class="d-block"
-                    alt=""
-                    />
-                </div>
-                </div>
-                <button
-                class="carousel-control-prev"
-                type="button"
-                data-bs-target="#carouselExampleInterval"
-                data-bs-slide="prev"
+                    data-bs-ride="carousel"
                 >
-                <span
-                    class="carousel-control-prev-icon"
-                    aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Previous</span>
-                </button>
-                <button
-                class="carousel-control-next"
-                type="button"
-                data-bs-target="#carouselExampleInterval"
-                data-bs-slide="next"
-                >
-                <span
-                    class="carousel-control-next-icon"
-                    aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Next</span>
-                </button>
-            </div>
+                    <div class="carousel-inner">
+                    <div
+                        v-for="(img, index) in imagenes"
+                        :key="index"
+                        class="carousel-item"
+                        :class="{ active: index == 0 }"
+                        data-bs-interval="10000"
+                    >
+                        <img
+                        :src="img"
+                        
+                        height="300"
+                        class="d-block"
+                        alt=""
+                        />
+                    </div>
+                    </div>
+                    <button
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#carouselExampleInterval"
+                    data-bs-slide="prev"
+                    >
+                    <span
+                        class="carousel-control-prev-icon"
+                        aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#carouselExampleInterval"
+                    data-bs-slide="next"
+                    >
+                    <span
+                        class="carousel-control-next-icon"
+                        aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
             </div>
 
             <div class="row d-flex">
