@@ -2,7 +2,7 @@
   <div class="col">
     <div class="container color-fondo">
 
-        <div class="row mt-3">
+        <div class="row mt-3 d-flex">
 
             <!-- COLUMNA 1 (BOTONES) -->
 
@@ -15,12 +15,6 @@
                             style="font-size: 4rem; color: black"
                         ></i>
                         </a>                    
-                    </div>
-                    <div class="col">
-                        <b-form-file
-                            v-model="imagenP"              
-                            accept="image/*"
-                        ></b-form-file>            
                     </div>
                 </div>
             
@@ -70,7 +64,7 @@
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div v-for="(img, index) in imagenes" :key="index" class="carousel-item" :class="{ active: index==0 }">
-                            <img :src="img" class="d-block w-100" alt="...">
+                            <img :src="img" class="d-block w-100" height="200px" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -85,6 +79,15 @@
 
             </div>
 
+        </div>
+
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <b-form-file
+                    v-model="imagenP"              
+                    accept="image/*"
+                ></b-form-file>            
+            </div>
         </div>
 
     </div>

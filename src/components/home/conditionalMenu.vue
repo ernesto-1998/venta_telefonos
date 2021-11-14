@@ -1,7 +1,7 @@
 <template>
   <div
-    class="col-2 ms-4 border border-2 border-dark d-none d-lg-block d-md-block"
-    style="background-color: #fe9e00; height: 550px"
+    class="col-2 ms-4 d-none d-lg-block d-md-block"
+    style="background-color: #ffcc55; height: 550px; border: 10px ridge #ffcc55;"
   >
     <div class="row mt-3">
       <div class="col">
@@ -15,7 +15,7 @@
           <label
             class="form-check-label"
             for="flexSwitchCheckChecked"
-            style="color: white; font-size: large"
+            style="font-size: large"
             ><b>Nuevo</b></label
           >
         </div>
@@ -26,7 +26,7 @@
       <div class="col">
         <div class="card border border-dark" style="background-color: #fe9e00">
           <div class="card-header"><b>Marca</b></div>
-          <div class="ps-4">
+          <div class="container">
             <div class="form-check mt-2">
               <input
                 class="form-check-input"
@@ -94,7 +94,7 @@
       <div class="col">
         <div class="card border border-dark" style="background-color: #fe9e00">
           <div class="card-header"><b>Sistema</b></div>
-          <div class="ps-4">
+          <div class="container">
             <div class="form-check mt-2">
               <input
                 class="form-check-input"
@@ -138,7 +138,7 @@
       <div class="col">
         <div class="card border border-dark" style="background-color: #fe9e00">
           <div class="card-header"><b>Pantalla</b></div>
-          <div class="ps-4">
+          <div class="container">
             <div class="form-check mt-2">
               <input
                 class="form-check-input"

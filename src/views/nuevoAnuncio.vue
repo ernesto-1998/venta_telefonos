@@ -1,133 +1,134 @@
 <template>
   <!-- NUEVO ANUNCIO DESKTOP -->
 
-  <div class="container mt-3">
+  <div class="container-fluid mt-3">
     <div class="row">
       <div class="col-md-6">
-
         <!-- PRIMER CUADRANTE (TELEFONO) -->
 
         <div class="row">
           <div class="col">
             <div class="card color-fondo">
-              <div class="row mt-3">
-                <div class="col-3">
-                  <label for=""><b>Estado:</b></label>
-                </div>
-                <div class="col">
-                  <div class="form-check form-check-inline">
-                    <input
-                      v-model="anuncio.telefono.estado"
-                      class="form-check-input"
-                      type="radio"
-                      name="inlineRadioOptions"
-                      id="inlineRadio1"
-                      value="nuevo"
-                    />
-                    <label class="form-check-label" for="inlineRadio1"
-                      >Nuevo</label
-                    >
+              <div class="container">
+                <div class="row mt-3">
+                  <div class="col-3">
+                    <label for=""><b>Estado:</b></label>
                   </div>
-                  <div class="form-check form-check-inline">
-                    <input
-                      v-model="anuncio.telefono.estado"
-                      class="form-check-input"
-                      type="radio"
-                      name="inlineRadioOptions"
-                      id="inlineRadio2"
-                      value="usado"
-                    />
-                    <label class="form-check-label" for="inlineRadio2"
-                      >Usado</label
-                    >
+                  <div class="col">
+                    <div class="form-check form-check-inline">
+                      <input
+                        v-model="anuncio.telefono.estado"
+                        class="form-check-input"
+                        type="radio"
+                        name="inlineRadioOptions"
+                        id="inlineRadio1"
+                        value="nuevo"
+                      />
+                      <label class="form-check-label" for="inlineRadio1"
+                        >Nuevo</label
+                      >
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        v-model="anuncio.telefono.estado"
+                        class="form-check-input"
+                        type="radio"
+                        name="inlineRadioOptions"
+                        id="inlineRadio2"
+                        value="usado"
+                      />
+                      <label class="form-check-label" for="inlineRadio2"
+                        >Usado</label
+                      >
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="row mt-3">
-                <div class="col-3">
-                  <label for=""><b>Marca:</b></label>
+                <div class="row mt-3">
+                  <div class="col-3">
+                    <label for=""><b>Marca:</b></label>
+                  </div>
+                  <div class="col">
+                    <input
+                      v-model="anuncio.telefono.marca"
+                      type="text"
+                      style="width: 90px"
+                    />
+                  </div>
                 </div>
-                <div class="col">
-                  <input
-                    v-model="anuncio.telefono.marca"
-                    type="text"
-                    style="width: 90px"
-                  />
-                </div>
-              </div>
 
-              <div class="row mt-3">
-                <div class="col-3">
-                  <label for=""><b>Modelo:</b></label>
+                <div class="row mt-3">
+                  <div class="col-3">
+                    <label for=""><b>Modelo:</b></label>
+                  </div>
+                  <div class="col">
+                    <input
+                      v-model="anuncio.telefono.modelo"
+                      type="text"
+                      style="width: 90px"
+                    />
+                  </div>
                 </div>
-                <div class="col">
-                  <input
-                    v-model="anuncio.telefono.modelo"
-                    type="text"
-                    style="width: 90px"
-                  />
-                </div>
-              </div>
 
-              <div class="row mt-3">
-                <div class="col-3">
-                  <label for=""><b>Pantalla:</b></label>
+                <div class="row mt-3">
+                  <div class="col-3">
+                    <label for=""><b>Pantalla:</b></label>
+                  </div>
+                  <div class="col">
+                    <input
+                      v-model="anuncio.telefono.pantalla"
+                      type="number"
+                      style="width: 90px"
+                    />
+                  </div>
                 </div>
-                <div class="col">
-                  <input
-                    v-model="anuncio.telefono.pantalla"
-                    type="number"
-                    style="width: 90px"
-                  />
-                </div>
-              </div>
 
-              <div class="row mt-3">
-                <div class="col-3">
-                  <label for=""><b>Sistema:</b></label>
+                <div class="row mt-3">
+                  <div class="col-3">
+                    <label for=""><b>Sistema:</b></label>
+                  </div>
+                  <div class="col d-flex justify-content-center">
+                    <select
+                      v-model="anuncio.telefono.sistema"
+                      class="form-select"
+                      style="width: 160px"
+                      aria-label="Default select example"
+                    >
+                      <option disabled value="">
+                        Seleccione un sistema operativo
+                      </option>
+                      <option value="Ios">Ios</option>
+                      <option value="Android">Android</option>
+                      <option value="Windows">Windows</option>
+                      <option value="Harmony OS">Harmony OS</option>
+                    </select>
+                  </div>
                 </div>
-                <div class="col d-flex justify-content-center">
-                  <select
-                    v-model="anuncio.telefono.sistema"
-                    class="form-select"
-                    style="width: 160px"
-                    aria-label="Default select example"
-                  >
-                    <option disabled value="">
-                      Seleccione un sistema operativo
-                    </option>
-                    <option value="Ios">Ios</option>
-                    <option value="Android">Android</option>
-                    <option value="Windows">Windows</option>
-                    <option value="Harmony OS">Harmony OS</option>
-                  </select>
-                </div>
-              </div>
 
-              <div class="row mt-3">
-                <div class="col-3">
-                  <label for=""><b>Rom:</b></label>
+                <div class="row mt-3">
+                  <div class="col-3">
+                    <label for=""><b>Rom:</b></label>
+                  </div>
+                  <div class="col">
+                    <input
+                      v-model="anuncio.telefono.rom"
+                      type="number"
+                      style="width: 90px"
+                    />
+                  </div>
                 </div>
-                <div class="col">
-                  <input
-                    v-model="anuncio.telefono.rom"
-                    type="number"
-                    style="width: 90px"
-                  />
-                </div>
-              </div>
 
-              <div class="row my-3">
-                <div class="col-3">
-                  <label for=""><b>RAM:</b></label>
-                </div>
-                <div class="col">
-                  <input
-                    v-model="anuncio.telefono.ram"
-                    type="number"
-                    style="width: 90px"
-                  />
+                <div class="row my-3">
+                  <div class="col-3">
+                    <label for=""><b>RAM:</b></label>
+                  </div>
+                  <div class="col">
+                    <input
+                      v-model="anuncio.telefono.ram"
+                      type="number"
+                      style="width: 90px"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -139,15 +140,12 @@
         <div class="row pt-3">
           <form-carousel />
         </div>
-
       </div>
 
       <div class="col px-4 px-md-0">
-
         <!-- TERCER CUADRANTE (ANUNCIO) -->
 
-        <div class="row mt-3 mt-md-0">
-
+        <div class="row mt-3 mt-md-0 me-md-3">
           <div class="col px-4 ms-lg-5 color-fondo">
             <div class="row mt-2">
               <label for=""><b>Titulo breve del anuncio</b></label>
@@ -193,10 +191,10 @@
             </div>
 
             <div class="row mt-3 d-flex justify-content-center">
-              <div class="col-6">
+              <div class="col col-md-6">
                 <div
                   class="card text-center"
-                  style="background-color: #ffcc55; border: 10px ridge #ffcc55;"
+                  style="background-color: #ffcc55; border: 10px ridge #ffcc55"
                 >
                   <div class="card-header border-bottom border-dark">
                     <b>Precio</b>
