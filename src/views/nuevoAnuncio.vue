@@ -218,11 +218,11 @@
                         <th scope="col">Tipo</th>
                       </tr>
                     </thead>
-                    <tbody :v-for="(this.contador2) in imagenes" :key="this.contador2">
-                      <tr>
-                        <td>{{this.contador2}}</td>
-                        <td>140 kb</td>
-                        <td>png</td>
+                    <tbody >
+                      <tr v-for="(value, index) in metaDatosI" :key="index">
+                        <td>{{index+1}}</td>
+                        <td>{{ value.size }} kb</td>
+                        <td>{{ value.type === 'image/jpeg' ? '.jpg' : '.png' }}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -283,7 +283,7 @@
                 <div class="col d-flex justify-content-center">
                   <b-form-file
                     v-model="imagenP"
-                    accept=".jpg, .png,"
+                    
                   ></b-form-file>
                 </div>
               </div>
@@ -402,6 +402,7 @@ export default {
       contador: 1,
       contador2: 0,
       contador3: 1,
+      metaDatosI: [],
       carpeta: "imagenes",
       imagenes:[],
       imagenP: null,
@@ -503,10 +504,13 @@ export default {
         .child(this.carpeta + "/" + this.contador3.toString())
         .getDownloadURL()
         .then((url) => {
-
             this2.imagenes.push(url);
 
         });
+
+      const metaDatos = await referencia
+        .child(this.carpeta + "/" + this.contador3.toString()).getMetadata()
+        this.metaDatosI.push({size: (metaDatos.size*0.001).toFixed(0), type: metaDatos.contentType})
         this.contador3 += 1;
     }
 
@@ -514,8 +518,8 @@ export default {
 };
 </script>
 <style scoped>
-.color-fondo {
-  background-color: #ffcc35;
-  border: 10px ridge #ffcc25;
-}
+  .color-fondo {
+    background-color: #ffcc35;
+    border: 10px ridge #ffcc25;
+  }
 </style>
