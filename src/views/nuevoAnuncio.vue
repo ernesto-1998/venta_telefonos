@@ -392,8 +392,6 @@
 <script>
 import { db, st } from "../firebase";
 
-// import formCarousel from "../components/nuevoAnuncio/formCarousel.vue";
-
 export default {
   name: "nuevoAnuncio",
   components: {
@@ -475,6 +473,7 @@ export default {
     },
 
     cargarImagen(){
+
       if(this.imagenP !== null){
         try {
           const referencia = st.ref();
@@ -489,7 +488,9 @@ export default {
         } catch (error) {
           console.log(error)
           }        
-      }else{
+      } else if(this.imagenes.length > 3){
+        alert("Solo puede subir un maximo de 4 imagenes")
+      } else{
         alert("No ha seleccionado una imagen para subirla")
       }
     },
@@ -502,7 +503,7 @@ export default {
         .child(this.carpeta + "/" + this.contador3.toString())
         .getDownloadURL()
         .then((url) => {
-            console.log(url)
+
             this2.imagenes.push(url);
 
         });
