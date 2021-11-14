@@ -474,41 +474,39 @@ export default {
     },
 
     cargarImagen(){
-      try {
-        const referencia = st.ref();
-        let this2 = this;
-        const imgRefe = referencia.child(this.carpeta).child(this.contador.toString());
-        imgRefe.put(this.imagenP).then((snapshot) => {
-          this2.ponerImagen();
-          this.contador += 1;
-        })
+      if(this.imagenP !== null){
+        try {
+          const referencia = st.ref();
+          let this2 = this;
+          const imgRefe = referencia.child(this.carpeta).child(this.contador.toString());
+          imgRefe.put(this.imagenP).then((snapshot) => {
+            this2.ponerImagen();
+            this.imagenP = null;
+            this.contador += 1;
+          })
 
-      } catch (error) {
-        console.log(error)
+        } catch (error) {
+          console.log(error)
+          }        
+      }else{
+        alert("No ha seleccionado una imagen para subirla")
       }
     },
 
     async ponerImagen(){
+
       const referencia = st.ref();
       let this2 = this
       let contador2 = 1;
       await referencia
-        .child(this.carpeta + "/")
-        .listAll()
-        .then(function(resultado) {
-          resultado.items.forEach(function(imgReferencia){
-            let nombre = imgReferencia.name;
-
-             while(nombre === contador2.toString()) {
-              imgReferencia.getDownloadURL().then(function (url) {
+        .child(this.carpeta + "/" + contador2.toString())
+        .getDownloadURL()
+    .then((url) => {
                 console.log(url)
                 this2.imagenes.push(url);
 
               });
               contador2 += 1;
-            }            
-          })
-        })
     }
 
   },
