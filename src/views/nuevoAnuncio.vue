@@ -135,10 +135,160 @@
           </div>
         </div>
 
-        <!-- SEGUNDO CUANDRANTE -->
+        <!-- SEGUNDO CUANDRANTE (MENU IMAGENES)-->
 
         <div class="row pt-3">
-          <form-carousel />
+          <div class="col">
+            <div class="container color-fondo">
+              <div class="row mt-3 d-flex">
+
+                <!-- COLUMNA CAROUSEL (VISTA MOVIL) -->
+
+                <div class="col d-md-none">
+                  <div
+                    id="carouselExampleControls2"
+                    class="carousel slide"
+                    data-bs-ride="carousel"
+                  >
+                    <div class="carousel-inner">
+                      <div
+                        v-for="(img, index) in imagenes"
+                        :key="index"
+                        class="carousel-item"
+                        :class="{ active: index == 0 }"
+                      >
+                        <img
+                          :src="img"
+                          class="d-block w-100"
+                          height="200px"
+                          alt="..."
+                        />
+                      </div>
+                    </div>
+                    <button
+                      class="carousel-control-prev"
+                      type="button"
+                      data-bs-target="#carouselExampleControls2"
+                      data-bs-slide="prev"
+                    >
+                      <span
+                        class="carousel-control-prev-icon"
+                        aria-hidden="true"
+                      ></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button
+                      class="carousel-control-next"
+                      type="button"
+                      data-bs-target="#carouselExampleControls2"
+                      data-bs-slide="next"
+                    >
+                      <span
+                        class="carousel-control-next-icon"
+                        aria-hidden="true"
+                      ></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- COLUMNA 1 (BOTONES) -->
+
+                <div class="col-lg-2">
+                  <div class="row d-flex justify-content-start">
+                    <div class="col">
+                      <a @click="cargarImagen()">
+                        <i
+                          class="bi bi-plus-circle"
+                          style="font-size: 4rem; color: black"
+                        ></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- COLUMNA 2 (REFERENCIAS DE IMAGENES) -->
+
+                <div class="col">
+                  <table class="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th scope="col">N</th>
+                        <th scope="col">Tamaño</th>
+                        <th scope="col">Tipo</th>
+                      </tr>
+                    </thead>
+                    <tbody :v-for="(this.contador2) in imagenes" :key="this.contador2">
+                      <tr>
+                        <td>{{this.contador2}}</td>
+                        <td>140 kb</td>
+                        <td>png</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- COLUMNA 3 (CAROUSEL) -->
+
+                <div class="col d-none d-md-block">
+                  <div
+                    id="carouselExampleControls"
+                    class="carousel slide"
+                    data-bs-ride="carousel"
+                  >
+                    <div class="carousel-inner">
+                      <div
+                        v-for="(img, index) in imagenes"
+                        :key="index"
+                        class="carousel-item"
+                        :class="{ active: index == 0 }"
+                      >
+                        <img
+                          :src="img"
+                          class="d-block w-100"
+                          height="200px"
+                          alt="..."
+                        />
+                      </div>
+                    </div>
+                    <button
+                      class="carousel-control-prev"
+                      type="button"
+                      data-bs-target="#carouselExampleControls"
+                      data-bs-slide="prev"
+                    >
+                      <span
+                        class="carousel-control-prev-icon"
+                        aria-hidden="true"
+                      ></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button
+                      class="carousel-control-next"
+                      type="button"
+                      data-bs-target="#carouselExampleControls"
+                      data-bs-slide="next"
+                    >
+                      <span
+                        class="carousel-control-next-icon"
+                        aria-hidden="true"
+                      ></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col d-flex justify-content-center">
+                  <b-form-file
+                    v-model="imagenP"
+                    accept=".jpg, .png,"
+                  ></b-form-file>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -242,15 +392,20 @@
 <script>
 import { db, st } from "../firebase";
 
-import formCarousel from "../components/nuevoAnuncio/formCarousel.vue";
+// import formCarousel from "../components/nuevoAnuncio/formCarousel.vue";
 
 export default {
   name: "nuevoAnuncio",
   components: {
-    formCarousel,
+    
   },
   data() {
     return {
+      contador: 1,
+      contador2: 0,
+      carpeta: "imagenes",
+      imagenes:[],
+      imagenP: null,
       id_anuncio: "",
       anuncio: {
         titulo: "",
@@ -317,6 +472,45 @@ export default {
         alert("Debe llenar todos los campos de ambos formularios");
       }
     },
+
+    cargarImagen(){
+      try {
+        const referencia = st.ref();
+        let this2 = this;
+        const imgRefe = referencia.child(this.carpeta).child(this.contador.toString());
+        imgRefe.put(this.imagenP).then((snapshot) => {
+          this2.ponerImagen();
+          this.contador += 1;
+        })
+
+      } catch (error) {
+        console.log(error)
+      }
+    },
+
+    async ponerImagen(){
+      const referencia = st.ref();
+      let this2 = this
+      let contador2 = 1;
+      await referencia
+        .child(this.carpeta + "/")
+        .listAll()
+        .then(function(resultado) {
+          resultado.items.forEach(function(imgReferencia){
+            let nombre = imgReferencia.name;
+
+             while(nombre === contador2.toString()) {
+              imgReferencia.getDownloadURL().then(function (url) {
+                console.log(url)
+                this2.imagenes.push(url);
+
+              });
+              contador2 += 1;
+            }            
+          })
+        })
+    }
+
   },
 };
 </script>

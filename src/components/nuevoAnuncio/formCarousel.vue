@@ -4,6 +4,28 @@
 
         <div class="row mt-3 d-flex">
 
+            <!-- COLUMNA CAROUSEL (VISTA MOVIL) -->
+
+            <div class="col d-md-none">
+
+                <div id="carouselExampleControls2" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div v-for="(img, index) in imagenes" :key="index" class="carousel-item" :class="{ active: index==0 }">
+                            <img :src="img" class="d-block w-100" height="200px" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+            </div>
+
             <!-- COLUMNA 1 (BOTONES) -->
 
             <div class="col-lg-2">
@@ -84,8 +106,8 @@
         <div class="row">
             <div class="col d-flex justify-content-center">
                 <b-form-file
-                    v-model="imagenP"              
-                    accept="image/*"
+                    v-model="imagenP" 
+                    accept=".jpg, .png,"             
                 ></b-form-file>            
             </div>
         </div>
