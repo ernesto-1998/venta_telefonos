@@ -499,14 +499,23 @@ export default {
       let this2 = this
       let contador2 = 1;
       await referencia
-        .child(this.carpeta + "/" + contador2.toString())
-        .getDownloadURL()
-    .then((url) => {
+        .child(this.carpeta + "/")
+        .listAll()
+        .then(function(resultado) {
+          resultado.items.forEach((imgReferencia) => {
+            let nombre = imgReferencia.name;
+              // console.log(imgReferencia)
+            //  if (nombre === contador2.toString()) {
+              imgReferencia.getDownloadURL().then((url) => {
                 console.log(url)
                 this2.imagenes.push(url);
 
               });
-              contador2 += 1;
+            //     contador2 = contador2 + 1;                
+            // }
+          
+          })
+        })
     }
 
   },
