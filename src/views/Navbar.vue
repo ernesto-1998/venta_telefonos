@@ -13,10 +13,11 @@
         <!-- <a :href="" class="btn btn-warning border border-3 border-dark mx-3"
           ><b>Inicio</b></a
         > -->
-        <router-link :to="{name : 'Home'}" class="btn btn-warning border border-3 border-dark mx-3">
+        <router-link :to="{name : 'Home'}" class="btn border border-3 border-dark mx-3" style="background-color: #ffcc30">
           <b>Inicio</b>
-          </router-link>
-        <a href="#" class="btn btn-warning border border-3 border-dark mx-2"
+        </router-link>
+        
+        <a href="#" class="btn border border-3 border-dark mx-2" style="background-color: #ffcc30"
           ><b>Estadísticas</b></a
         >
         <router-link :to="{name : 'nuevoAnuncio'}">
