@@ -135,7 +135,7 @@
           </div>
         </div>
 
-        <!-- SEGUNDO CUANDRANTE (MENU IMAGENES)-->
+        <!-- SEGUNDO CUADRANTE (MENU IMAGENES)-->
 
         <div class="row pt-3">
           <div class="col">
@@ -146,6 +146,7 @@
 
                 <div class="col d-md-none">
                   <div
+                    v-if="renderizarCarousel()"
                     id="carouselExampleControls2"
                     class="carousel slide"
                     data-bs-ride="carousel"
@@ -232,6 +233,7 @@
 
                 <div class="col d-none d-md-block">
                   <div
+                    v-if="renderizarCarousel()"
                     id="carouselExampleControls"
                     class="carousel slide"
                     data-bs-ride="carousel"
@@ -493,6 +495,15 @@ export default {
         alert("Solo puede subir un maximo de 4 imagenes")
       } else{
         alert("No ha seleccionado una imagen para subirla")
+      }
+    },
+
+    renderizarCarousel(){
+
+      if(this.imagenes.length === 0){
+        return false
+      }else{
+        return true
       }
     },
 
