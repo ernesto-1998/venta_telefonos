@@ -403,6 +403,7 @@ export default {
     return {
       contador: 1,
       contador2: 0,
+      contador3: 1,
       carpeta: "imagenes",
       imagenes:[],
       imagenP: null,
@@ -497,25 +498,15 @@ export default {
 
       const referencia = st.ref();
       let this2 = this
-      let contador2 = 1;
       await referencia
-        .child(this.carpeta + "/")
-        .listAll()
-        .then(function(resultado) {
-          resultado.items.forEach((imgReferencia) => {
-            let nombre = imgReferencia.name;
-              // console.log(imgReferencia)
-            //  if (nombre === contador2.toString()) {
-              imgReferencia.getDownloadURL().then((url) => {
-                console.log(url)
-                this2.imagenes.push(url);
+        .child(this.carpeta + "/" + this.contador3.toString())
+        .getDownloadURL()
+        .then((url) => {
+            console.log(url)
+            this2.imagenes.push(url);
 
-              });
-            //     contador2 = contador2 + 1;                
-            // }
-          
-          })
-        })
+        });
+        this.contador3 += 1;
     }
 
   },
