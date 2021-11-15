@@ -1,7 +1,6 @@
 <template>
   <div
-    class="col-2 ms-4 d-none d-lg-block d-md-block"
-    style="background-color: #ffcc55; height: 550px; border: 10px ridge #ffcc55;"
+    class="col-2 ms-4 d-none d-lg-block d-md-block color-fondo"
   >
     <div class="row mt-3">
       <div class="col">
@@ -24,7 +23,7 @@
 
     <div class="row mt-2">
       <div class="col">
-        <div class="card border border-dark" style="background-color: #fe9e00">
+        <div class="card color-fondo-interno">
           <div class="card-header"><b>Marca</b></div>
           <div class="container">
             <div class="form-check mt-2">
@@ -92,7 +91,7 @@
 
     <div class="row mt-2">
       <div class="col">
-        <div class="card border border-dark" style="background-color: #fe9e00">
+        <div class="card color-fondo-interno">
           <div class="card-header"><b>Sistema</b></div>
           <div class="container">
             <div class="form-check mt-2">
@@ -136,7 +135,7 @@
 
     <div class="row mt-2">
       <div class="col">
-        <div class="card border border-dark" style="background-color: #fe9e00">
+        <div class="card color-fondo-interno">
           <div class="card-header"><b>Pantalla</b></div>
           <div class="container">
             <div class="form-check mt-2">
@@ -185,3 +184,16 @@ export default {
   name: "conditionalMenu",
 };
 </script>
+
+<style scoped>
+  .color-fondo{
+    background-color: #ffcc35; 
+    height: 550px; 
+    border: 10px ridge #ffcc35;
+  }
+
+  .color-fondo-interno{
+    background-color: #ffcc55;
+    border: 10px ridge #ffcc55;
+  }
+</style>
