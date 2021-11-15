@@ -393,6 +393,7 @@
 
 <script>
 import { db, st } from "../firebase";
+import swal from 'sweetalert';
 
 export default {
   name: "nuevoAnuncio",
@@ -402,11 +403,12 @@ export default {
   data() {
     return {
       contador: 1,
-      contador2: 0,
+      contador2: 1,
       contador3: 1,
       metaDatosI: [],
       carpeta: "imagenes",
       imagenes:[],
+      imagenes2:[],
       imagenP: null,
       id_anuncio: "",
       anuncio: {
@@ -462,18 +464,35 @@ export default {
       if (this.validarTelefono() === true && this.validarAnuncio() === true) {
         try {
           const query = await db.collection("anuncios").add(this.anuncio);
-          console.log(
-            "El siguiente anuncio ha sido agregado exitosamente",
-            query.data
-          );
           this.id_anuncio = query.id;
+          this.guardarImagenes(this.id_anuncio)
+          swal({
+            title: "Buen trabajo!",
+            text: "Haz guardado el anuncio correctamente!",
+            icon: "success",
+            button: "Aww yiss!",
+          }); 
         } catch (error) {
-          console.log(error);
+          swal(error)
         }
       } else {
-        alert("Debe llenar todos los campos de ambos formularios");
+        swal("Debes llenar todos los campos de ambos formularios");
       }
     },
+
+    guardarImagenes(id){
+      const referencia = st.ref();
+      let this2 = this
+      if(this2.imagenes2.length !== 0){
+        this2.imagenes2.forEach((img) => {
+          const imgRefe = referencia.child(id).child(this2.contador2.toString())
+          imgRefe.put(img);
+          this2.contador2 += 1;
+        });
+      }else{
+        swal("Debe agregar por lo menos una imagen")
+      }
+    },    
 
     cargarImagen(){
 
@@ -481,6 +500,7 @@ export default {
         try {
           const referencia = st.ref();
           let this2 = this;
+          this2.imagenes2.push(this2.imagenP);
           const imgRefe = referencia.child(this.carpeta).child(this.contador.toString());
           imgRefe.put(this.imagenP).then((snapshot) => {
             this2.ponerImagen();
