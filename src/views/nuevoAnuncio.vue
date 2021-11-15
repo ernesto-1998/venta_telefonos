@@ -469,12 +469,8 @@ export default {
             const query = await db.collection("anuncios").add(this.anuncio);
             this.id_anuncio = query.id;
             this.guardarImagenes(this.id_anuncio)
-            swal({
-              title: "Buen trabajo!",
-              text: "Haz guardado el anuncio correctamente!",
-              icon: "success",
-              button: "Aww yiss!",
-            }); 
+            swal("Anuncio Guardado", "El anuncio se ha guardado correctamente", "success"); 
+            this.$router.push({name: 'Home'})
           } catch (error) {
             swal(error)
           }
