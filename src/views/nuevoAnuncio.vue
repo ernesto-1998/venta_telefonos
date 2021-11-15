@@ -462,18 +462,22 @@ export default {
 
     async guardarAnuncio() {
       if (this.validarTelefono() === true && this.validarAnuncio() === true) {
-        try {
-          const query = await db.collection("anuncios").add(this.anuncio);
-          this.id_anuncio = query.id;
-          this.guardarImagenes(this.id_anuncio)
-          swal({
-            title: "Buen trabajo!",
-            text: "Haz guardado el anuncio correctamente!",
-            icon: "success",
-            button: "Aww yiss!",
-          }); 
-        } catch (error) {
-          swal(error)
+        if (this.imagenes2.length > 0){
+          try {
+            const query = await db.collection("anuncios").add(this.anuncio);
+            this.id_anuncio = query.id;
+            this.guardarImagenes(this.id_anuncio)
+            swal({
+              title: "Buen trabajo!",
+              text: "Haz guardado el anuncio correctamente!",
+              icon: "success",
+              button: "Aww yiss!",
+            }); 
+          } catch (error) {
+            swal(error)
+          }
+        } else{
+          swal("Debes incluir al menos una imagen en tu anuncio")
         }
       } else {
         swal("Debes llenar todos los campos de ambos formularios");
