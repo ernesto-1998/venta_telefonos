@@ -191,6 +191,7 @@
                       <span class="visually-hidden">Next</span>
                     </button>
                   </div>
+                  <img height="200" v-if="!renderizarCarousel()" src="https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482953.jpg" alt="">
                 </div>
 
                 <!-- COLUMNA 1 (BOTONES) -->
@@ -278,6 +279,7 @@
                       <span class="visually-hidden">Next</span>
                     </button>
                   </div>
+                  <img height="200" width="150" v-if="!renderizarCarousel()" src="https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482953.jpg" alt="">                  
                 </div>
               </div>
 
@@ -477,10 +479,10 @@ export default {
             swal(error)
           }
         } else{
-          swal("Debes incluir al menos una imagen en tu anuncio")
+          swal("Error", "Debes incluir al menos una imagen en tu anuncio", "error")
         }
       } else {
-        swal("Debes llenar todos los campos de ambos formularios");
+        swal("Error","Debes llenar todos los campos de ambos formularios (Los numeros no pueden ser negativos)", "error");
       }
     },
 
@@ -494,31 +496,33 @@ export default {
           this2.contador2 += 1;
         });
       }else{
-        swal("Debe agregar por lo menos una imagen")
+        swal("Error", "Debe incluir al menos una imagen en tu anuncio", "error")
       }
     },    
 
     cargarImagen(){
 
       if(this.imagenP !== null){
-        try {
-          const referencia = st.ref();
-          let this2 = this;
-          this2.imagenes2.push(this2.imagenP);
-          const imgRefe = referencia.child(this.carpeta).child(this.contador.toString());
-          imgRefe.put(this.imagenP).then((snapshot) => {
-            this2.ponerImagen();
-            this.imagenP = null;
-            this.contador += 1;
-          })
+        if(this.imagenes.length < 4){
+          try {
+            const referencia = st.ref();
+            let this2 = this;
+            this2.imagenes2.push(this2.imagenP);
+            const imgRefe = referencia.child(this.carpeta).child(this.contador.toString());
+            imgRefe.put(this.imagenP).then((snapshot) => {
+              this2.ponerImagen();
+              this.imagenP = null;
+              this.contador += 1;
+            })
 
-        } catch (error) {
-          console.log(error)
-          }        
-      } else if(this.imagenes.length > 3){
-        alert("Solo puede subir un maximo de 4 imagenes")
+          } catch (error) {
+            console.log(error)
+            }            
+        }else{
+          swal("Error" ,"Solo puede subir un máximo de 4 imagenes por anuncio", "error")
+        }
       } else{
-        alert("No ha seleccionado una imagen para subirla")
+        swal("Error", "No ha seleccionado una imagen para subirla", "error")
       }
     },
 
