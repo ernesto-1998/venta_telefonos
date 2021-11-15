@@ -286,8 +286,9 @@
               <div class="row">
                 <div class="col d-flex justify-content-center">
                   <b-form-file
+                    plain
                     v-model="imagenP"
-                    
+                    id="file-small" size="sm"
                   ></b-form-file>
                 </div>
               </div>

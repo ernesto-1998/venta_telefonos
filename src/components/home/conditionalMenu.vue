@@ -188,7 +188,7 @@ export default {
 <style scoped>
   .color-fondo{
     background-color: #ffcc35; 
-    height: 550px; 
+    /* height: 610px;  */
     border: 10px ridge #ffcc35;
   }
 
