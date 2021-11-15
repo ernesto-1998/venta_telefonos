@@ -13,14 +13,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/nuevoAnuncio',
+    path: '/nuevo-anuncio',
     name: 'nuevoAnuncio',
     component: nuevoAnuncio
-  },
-  {
-    path: '/carousel',
-    name: 'carousel',
-    component: carousel
   },
 ]
 
