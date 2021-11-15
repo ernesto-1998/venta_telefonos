@@ -63,10 +63,10 @@
       <div id="menuNavegacion" class="collapse navbar-collapse">
         <ul class="navbar-nav ms-3 d-lg-none d-md-none" id="navbarBotones">
           <li class="nav-item">
-            <a href="#" class="nav-link"><b>Inicio</b></a>
+            <router-link :to="{name: 'Home'}" class="nav-link"><b>Inicio</b></router-link>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link"><b>Nuevo Anuncio</b></a>
+            <router-link :to="{name: 'nuevoAnuncio'}" class="nav-link"><b>Nuevo Anuncio</b></router-link>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link"><b>Carrito</b></a>
