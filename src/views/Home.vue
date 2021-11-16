@@ -22,8 +22,8 @@
 
         <!-- FILA DE CARDS -->
 
-          <div class="row m-2">
-            <div class="col col-md-3 col-xs-12 col-sm-6" v-for="anuncio in anuncios" :key="anuncio.id">
+          <div class="row">
+            <div class="mt-3 col-md-3 col-xs-12 col-sm-6" v-for="anuncio in anuncios" :key="anuncio.id">
               <card :anuncio="anuncio"/>
             </div>
           </div>
@@ -59,10 +59,10 @@ export default {
     };
   },
   methods:{
-    async traerAnuncios(){
+    traerAnuncios(){
       try {
         this.anuncios = []
-        await db.collection('anuncios').get()
+        db.collection('anuncios').get()
         .then((data) => {
         data.forEach(async (documentos) => {
           this.foto = await st.ref().child(documentos.id + "/" + "1").getDownloadURL();
