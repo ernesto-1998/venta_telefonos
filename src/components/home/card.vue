@@ -4,7 +4,7 @@
       <div class="card-body text-center border border-2 border-dark">
         <div>
             <h5><b>${{anuncio.precio}}</b></h5>
-            <p>{{anuncio.telefono.marca}} {{anuncio.telefono.modelo}}, Pantalla de {{anuncio.telefono.pantalla}} pulg. {{anuncio.telefono.ram}} GB de RAM, {{anuncio.telefono.rom}} de almacenamiento interno </p>
+            {{anuncio.telefono.marca}} {{anuncio.telefono.modelo}}, Pantalla de {{anuncio.telefono.pantalla}} pulg. {{anuncio.telefono.ram}} GB de RAM, {{anuncio.telefono.rom}} GB de almacenamiento interno 
         </div>
       </div>
     </div>

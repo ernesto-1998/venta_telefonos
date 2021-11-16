@@ -417,18 +417,18 @@ export default {
       anuncio: {
         titulo: "",
         nombre: "",
-        telefonoContacto: 0,
+        telefonoContacto: null,
         descripcion: "",
-        precio: 0,
+        precio: null,
         foto: null,
         telefono: {
           estado: "",
           marca: "",
           modelo: "",
-          pantalla: 0,
+          pantalla: null,
           sistema: "",
-          rom: 0,
-          ram: 0,
+          rom: null,
+          ram: null,
         },
       },
     };
