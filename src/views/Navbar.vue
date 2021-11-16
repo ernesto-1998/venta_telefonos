@@ -97,7 +97,7 @@ export default {
               bus.$emit('buscarCard', this.texto)
             }
         }
-    }
+    },
 }
 </script>
 

@@ -11,11 +11,11 @@
 
           <div class="row">
 
-            <div class="col">
+            <div class="col d-none d-md-block">
               <conditional-precios/>
             </div>
             <div class="col">
-
+              <conditional-fecha/>
             </div>
 
           </div>
@@ -35,13 +35,15 @@
 <script>
 import conditionalMenu from '@/components/home/conditionalMenu'
 import conditionalPrecios from '@/components/home/conditionalPrecios'
+import conditionalFecha from '@/components/home/conditionalFecha'
 
 
 export default {
   name: 'Home',
   components: {
     conditionalMenu,
-    conditionalPrecios
+    conditionalPrecios,
+    conditionalFecha
 
   }
 }
