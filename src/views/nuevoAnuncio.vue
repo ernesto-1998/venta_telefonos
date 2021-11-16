@@ -468,10 +468,10 @@ export default {
       if (this.validarTelefono() === true && this.validarAnuncio() === true) {
         if (this.imagenes2.length > 0){
           try {
-            this.anuncio.foto = this.imagenes[0]
             const query = await db.collection("anuncios").add(this.anuncio);
             this.id_anuncio = query.id;
-            this.guardarImagenes(this.id_anuncio) 
+            this.guardarImagenes(this.id_anuncio)
+
             swal({ title: "Anuncio Guardado!",
                   text: "El anuncio se ha guardado perfectamente!",
                   icon: "success", timer: 2500, button: false, })
@@ -489,6 +489,8 @@ export default {
       }
     },
 
+    // Este método guarda las imagenes de carousel en la carpeta del usuario
+
     guardarImagenes(id){
       const referencia = st.ref();
       let this2 = this
@@ -501,7 +503,9 @@ export default {
       }else{
         swal("Error", "Debe incluir al menos una imagen en tu anuncio", "error")
       }
-    },    
+    },   
+    
+    // Este metodo ingresa las imagenes a la carpeta imagenes del storage
 
     cargarImagen(){
 
@@ -511,6 +515,7 @@ export default {
             const referencia = st.ref();
             let this2 = this;
             this2.imagenes2.push(this2.imagenP);
+            console.log("Este es imagenes2" + this.imagenes2)
             const imgRefe = referencia.child(this.carpeta).child(this.contador.toString());
             imgRefe.put(this.imagenP).then((snapshot) => {
               this2.ponerImagen();
@@ -529,14 +534,7 @@ export default {
       }
     },
 
-    renderizarCarousel(){
-
-      if(this.imagenes.length === 0){
-        return false
-      }else{
-        return true
-      }
-    },
+    // Este metodo trae las imagenes de la carpeta imagenes del storage y las pone en el carousel 
 
     async ponerImagen(){
 
@@ -547,6 +545,7 @@ export default {
         .getDownloadURL()
         .then((url) => {
             this2.imagenes.push(url);
+            console.log("Este es imagenes:" + this.imagenes)
 
         });
 
@@ -554,7 +553,16 @@ export default {
         .child(this.carpeta + "/" + this.contador3.toString()).getMetadata()
         this.metaDatosI.push({size: (metaDatos.size*0.001).toFixed(0), type: metaDatos.contentType})
         this.contador3 += 1;
-    }
+    },    
+
+    renderizarCarousel(){
+
+      if(this.imagenes.length === 0){
+        return false
+      }else{
+        return true
+      }
+    },
 
   },
 };
