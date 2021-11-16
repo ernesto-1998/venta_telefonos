@@ -1,10 +1,10 @@
 <template>
     <div class="card">
-      <img :src="info.foto" class="card-img-top" alt="..." />
+      <img :src="anuncio.foto" class="card-img-top" alt="..." />
       <div class="card-body text-center border border-2 border-dark">
         <p class="card-text">
-            <h5><b>$ {{info.precio}} </b></h5>
-            {{info.descripcion}}
+            <h5><b>${{anuncio.precio}}</b></h5>
+            {{anuncio.descripcion}}
         </p>
       </div>
     </div>
@@ -13,7 +13,7 @@
 export default {
     name: 'card',
     props:{
-        info: Object,
+        anuncio: Object,
     }
 };
 </script>

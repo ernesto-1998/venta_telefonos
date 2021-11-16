@@ -23,8 +23,8 @@
         <!-- FILA DE CARDS -->
 
           <div class="row m-2">
-            <div class="col col-md-3 col-xs-12 col-sm-6" v-for="(value, index) in anuncios" :key="index">
-              <card :info="value"/>
+            <div class="col col-md-3 col-xs-12 col-sm-6" v-for="anuncio in anuncios" :key="anuncio.id">
+              <card :anuncio="anuncio"/>
             </div>
           </div>
         </div>
@@ -82,11 +82,16 @@ export default {
             }
           }
           this.anuncios.push(anuncio);
-          console.log(this.anuncios.id)
+          console.log(this.anuncios)
         });          
         })
-        for(let anuncio1 of this.anuncios){
-          anuncio1.foto = await st.ref().child(anuncio1.id.toString() + "/1").getDownloadURL();
+        for(let anuncio of this.anuncios){
+          await st.ref().child(anuncio.id.toString() + "/" + "1").getDownloadURL()
+          .then((url) => {
+            console.log(url)
+          anuncio.foto = url;
+
+        });
         }        
       } catch (error) {
         console.log(error)
