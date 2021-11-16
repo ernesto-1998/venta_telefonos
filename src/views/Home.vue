@@ -54,7 +54,8 @@ export default {
   },
   data(){
     return{
-      anuncios: []
+      anuncios: [],
+      foto: null,
     };
   },
   methods:{
@@ -63,7 +64,8 @@ export default {
         this.anuncios = []
         await db.collection('anuncios').get()
         .then((data) => {
-        data.forEach(documentos => {
+        data.forEach(async (documentos) => {
+          this.foto = await st.ref().child(documentos.id + "/" + "1").getDownloadURL();
           let anuncio = {
             id: documentos.id,
             nombre: documentos.data().nombre,
@@ -71,7 +73,7 @@ export default {
             telefonoContacto: documentos.data().telefonoContacto,
             titulo: documentos.data().titulo,
             descripcion: documentos.data().descripcion,
-            foto: documentos.data().foto,
+            foto: this.foto,
             telefono: {
               estado: documentos.data().telefono.estado,
               marca: documentos.data().telefono.marca,
@@ -82,17 +84,8 @@ export default {
             }
           }
           this.anuncios.push(anuncio);
-          console.log(this.anuncios)
         });          
-        });
-        // for(let anuncio of this.anuncios){
-        //   await st.ref().child(anuncio.id.toString() + "/" + "1").getDownloadURL()
-        //   .then((url) => {
-        //     console.log(url)
-        //   anuncio.foto = url;
-
-        // });
-        // }        
+        });      
       } catch (error) {
         console.log(error)
       }

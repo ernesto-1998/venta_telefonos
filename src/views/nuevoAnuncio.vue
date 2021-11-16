@@ -471,7 +471,6 @@ export default {
             const query = await db.collection("anuncios").add(this.anuncio);
             this.id_anuncio = query.id;
             this.guardarImagenes(this.id_anuncio)
-
             swal({ title: "Anuncio Guardado!",
                   text: "El anuncio se ha guardado perfectamente!",
                   icon: "success", timer: 2500, button: false, })
@@ -515,9 +514,8 @@ export default {
             const referencia = st.ref();
             let this2 = this;
             this2.imagenes2.push(this2.imagenP);
-            console.log("Este es imagenes2" + this.imagenes2)
             const imgRefe = referencia.child(this.carpeta).child(this.contador.toString());
-            imgRefe.put(this.imagenP).then((snapshot) => {
+            imgRefe.put(this.imagenP).then(() => {
               this2.ponerImagen();
               this.imagenP = null;
               this.contador += 1;
@@ -545,7 +543,6 @@ export default {
         .getDownloadURL()
         .then((url) => {
             this2.imagenes.push(url);
-            console.log("Este es imagenes:" + this.imagenes)
 
         });
 
