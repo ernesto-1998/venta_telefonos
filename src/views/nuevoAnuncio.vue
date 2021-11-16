@@ -3,7 +3,7 @@
 
   <div class="container-fluid mt-3">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 mb-3">
         <!-- PRIMER CUADRANTE (TELEFONO) -->
 
         <div class="row">

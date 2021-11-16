@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import nuevoAnuncio from '../views/nuevoAnuncio.vue'
-import carousel from '@/components/nuevoAnuncio/formCarousel.vue'
+import conditionalPrecios from '@/components/home/conditionalPrecios.vue'
 
 Vue.use(VueRouter)
 
@@ -17,6 +17,7 @@ const routes = [
     name: 'nuevoAnuncio',
     component: nuevoAnuncio
   },
+
 ]
 
 const router = new VueRouter({
