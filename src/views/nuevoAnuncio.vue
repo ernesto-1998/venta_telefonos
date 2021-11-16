@@ -420,6 +420,7 @@ export default {
         telefonoContacto: 0,
         descripcion: "",
         precio: 0,
+        foto: null,
         telefono: {
           estado: "",
           marca: "",
@@ -467,6 +468,7 @@ export default {
       if (this.validarTelefono() === true && this.validarAnuncio() === true) {
         if (this.imagenes2.length > 0){
           try {
+            this.anuncio.foto = this.imagenes[0]
             const query = await db.collection("anuncios").add(this.anuncio);
             this.id_anuncio = query.id;
             this.guardarImagenes(this.id_anuncio) 
@@ -477,7 +479,7 @@ export default {
               this.$router.push({name: 'Home'})
             }, 2500)
           } catch (error) {
-            swal(error)
+            console.log(error)
           }
         } else{
           swal("Error", "Debes incluir al menos una imagen en tu anuncio", "error")

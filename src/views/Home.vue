@@ -71,6 +71,7 @@ export default {
             telefonoContacto: documentos.data().telefonoContacto,
             titulo: documentos.data().titulo,
             descripcion: documentos.data().descripcion,
+            foto: documentos.data().foto,
             telefono: {
               estado: documentos.data().telefono.estado,
               marca: documentos.data().telefono.marca,
@@ -78,21 +79,20 @@ export default {
               pantalla: documentos.data().telefono.pantalla,
               rom: documentos.data().telefono.rom,
               ram: documentos.data().telefono.ram,
-              foto: ""
             }
           }
           this.anuncios.push(anuncio);
           console.log(this.anuncios)
         });          
-        })
-        for(let anuncio of this.anuncios){
-          await st.ref().child(anuncio.id.toString() + "/" + "1").getDownloadURL()
-          .then((url) => {
-            console.log(url)
-          anuncio.foto = url;
-
         });
-        }        
+        // for(let anuncio of this.anuncios){
+        //   await st.ref().child(anuncio.id.toString() + "/" + "1").getDownloadURL()
+        //   .then((url) => {
+        //     console.log(url)
+        //   anuncio.foto = url;
+
+        // });
+        // }        
       } catch (error) {
         console.log(error)
       }
