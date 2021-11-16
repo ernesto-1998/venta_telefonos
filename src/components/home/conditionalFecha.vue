@@ -14,8 +14,18 @@
     </div>
 </template>
 <script>
+import {bus} from "../../main"
+
 export default {
-    name: 'conditionalFecha'
+    name: 'conditionalFecha',
+    methods: {
+        filtrarPrecio(){
+            bus.$emit('filtrarPrecio')
+        },
+        filtrarFecha(){
+            bus.$emit('filtrarFecha')
+        }
+    }
 }
 </script>
 <style scoped>
