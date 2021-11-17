@@ -30,8 +30,9 @@
             <div class="form-check mt-2">
               <input
                 class="form-check-input"
+                v-model="marcas"
                 type="checkbox"
-                value=""
+                value="samsung"
                 id="flexCheckDefault"
               />
               <label class="form-check-label" for="flexCheckDefault">
@@ -41,8 +42,9 @@
             <div class="form-check">
               <input
                 class="form-check-input"
+                v-model="marcas"
                 type="checkbox"
-                value=""
+                value="huawei"
                 id="flexCheckChecked"
               />
               <label class="form-check-label" for="flexCheckChecked">
@@ -53,8 +55,9 @@
             <div class="form-check">
               <input
                 class="form-check-input"
+                v-model="marcas"
                 type="checkbox"
-                value=""
+                value="nokia"
                 id="flexCheckChecked"
               />
               <label class="form-check-label" for="flexCheckChecked">
@@ -65,8 +68,9 @@
             <div class="form-check">
               <input
                 class="form-check-input"
+                v-model="marcas"
                 type="checkbox"
-                value=""
+                value="iphone"
                 id="flexCheckChecked"
               />
               <label class="form-check-label" for="flexCheckChecked">
@@ -77,8 +81,9 @@
             <div class="form-check pb-2">
               <input
                 class="form-check-input"
+                v-model="marcas"
                 type="checkbox"
-                value=""
+                value="xiaomi"
                 id="flexCheckChecked"
               />
               <label class="form-check-label" for="flexCheckChecked">
@@ -98,8 +103,9 @@
             <div class="form-check mt-2">
               <input
                 class="form-check-input"
+                v-model="sistemas"
                 type="checkbox"
-                value=""
+                value="android"
                 id="flexCheckDefault"
               />
               <label class="form-check-label" for="flexCheckDefault">
@@ -109,8 +115,9 @@
             <div class="form-check">
               <input
                 class="form-check-input"
+                v-model="sistemas"
                 type="checkbox"
-                value=""
+                value="windows"
                 id="flexCheckChecked"
               />
               <label class="form-check-label" for="flexCheckChecked">
@@ -121,8 +128,9 @@
             <div class="form-check pb-2">
               <input
                 class="form-check-input"
+                v-model="sistemas"
                 type="checkbox"
-                value=""
+                value="ios"
                 id="flexCheckChecked"
               />
               <label class="form-check-label" for="flexCheckChecked">
@@ -142,8 +150,9 @@
             <div class="form-check mt-2">
               <input
                 class="form-check-input"
+                v-model="pantallas"
                 type="checkbox"
-                value=""
+                value="6"
                 id="flexCheckDefault"
               />
               <label class="form-check-label" for="flexCheckDefault">
@@ -153,8 +162,9 @@
             <div class="form-check">
               <input
                 class="form-check-input"
+                v-model="pantallas"
                 type="checkbox"
-                value=""
+                value="5"
                 id="flexCheckChecked"
               />
               <label class="form-check-label" for="flexCheckChecked">
@@ -165,8 +175,9 @@
             <div class="form-check pb-2">
               <input
                 class="form-check-input"
+                v-model="pantallas"
                 type="checkbox"
-                value=""
+                value="5"
                 id="flexCheckChecked"
               />
               <label class="form-check-label" for="flexCheckChecked">
@@ -185,10 +196,24 @@ import {bus} from '../../main'
 
 export default {
   name: "conditionalMenu",
+  data(){
+    return{
+      marcas: [],
+      sistemas: [],
+      pantallas: []
+    };
+  },
   methods:{
     esNuevo(){
       bus.$emit("esNuevo")
+    },
+    filtrosMenu(){
+      bus.$emit("filtrarMenu" )
     }
+  },
+  updated(){
+    
+    console.log(this.marcas)
   }
 };
 </script>

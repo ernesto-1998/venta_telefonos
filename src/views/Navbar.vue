@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-light color-fondo">
     <div class="container-fluid d-none d-md-block">
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center justify-content-evenly">
         <i class="bi bi-megaphone-fill mx-3" style="font-size: 2rem"></i>
         <h4 class="pe-3"><b>Tienda Cellphone</b></h4>
         <input
@@ -10,9 +10,7 @@
           class="mx-3 col-8"
           style="border-radius: 50px; width: 300px"
         />
-        <!-- <a :href="" class="btn btn-warning border border-3 border-dark mx-3"
-          ><b>Inicio</b></a
-        > -->
+
         <router-link :to="{name : 'Home'}" class="btn border border-3 border-dark mx-3" style="background-color: #ffcc30">
           <b>Inicio</b>
         </router-link>
