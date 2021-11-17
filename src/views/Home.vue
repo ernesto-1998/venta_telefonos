@@ -60,6 +60,7 @@ export default {
       textoNavbar: "",
       filtrarPrecio: true,
       filtrarFecha: true,
+      estado: null,
       anunciosFiltrados: [],
     };
   },
@@ -104,8 +105,9 @@ export default {
         this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
           let regex = new RegExp(this.textoNavbar, "i");
           return regex.test(t.telefono.marca);
-        });
-      }else if(this.textoNavbar === ""){
+        });      
+      }  
+      else if(this.textoNavbar === ""){
         this.anunciosFiltrados = this.anuncios
       }
 
@@ -129,7 +131,18 @@ export default {
           }
           return 0;
         });        
-      }    
+      } 
+      if(this.estado === false){
+        this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
+          let regex = new RegExp("usado", "i");
+          return regex.test(t.telefono.estado);
+        });          
+      }else if(this.estado === true){
+        this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
+          let regex = new RegExp("nuevo", "i");
+          return regex.test(t.telefono.estado);
+        });          
+      }
     }
   },
   async created(){
@@ -147,6 +160,10 @@ export default {
     }),
     bus.$on("buscarCard", (data) => {
       this.textoNavbar = data;
+      this.filtrarAnuncios();
+    })
+    bus.$on("esNuevo", () => {
+      this.estado = !this.estado;
       this.filtrarAnuncios();
     })
   }

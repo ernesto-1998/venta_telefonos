@@ -6,6 +6,7 @@
       <div class="col">
         <div class="form-check form-switch">
           <input
+          @click="esNuevo"
             class="form-check-input"
             type="checkbox"
             id="flexSwitchCheckChecked"
@@ -180,8 +181,15 @@
 </template>
 
 <script>
+import {bus} from '../../main'
+
 export default {
   name: "conditionalMenu",
+  methods:{
+    esNuevo(){
+      bus.$emit("esNuevo")
+    }
+  }
 };
 </script>
 
