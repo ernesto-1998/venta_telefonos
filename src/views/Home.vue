@@ -61,6 +61,8 @@ export default {
       filtrarPrecio: true,
       filtrarFecha: true,
       filtrosMarcas: [],
+      filtrosSistemas: [],
+      filtrosPantallas: [],
       estado: null,
       anunciosFiltrados: [],
     };
@@ -84,6 +86,7 @@ export default {
             telefono: {
               estado: documentos.data().telefono.estado,
               marca: documentos.data().telefono.marca.toLowerCase(),
+              sistema: documentos.data().telefono.sistema,
               modelo: documentos.data().telefono.modelo,
               pantalla: documentos.data().telefono.pantalla,
               rom: documentos.data().telefono.rom,
@@ -171,6 +174,64 @@ export default {
         })        
       }
 
+      // Filtrar por Sistemas
+
+      if(this.filtrosSistemas.length > 0){
+        this.fitrosSistemas = this.filtrosSistemas.filter(x => {
+          if(x === "android"){
+            this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
+              let regex = new RegExp(x, "i");
+              return regex.test(t.telefono.sistema);
+            })
+          } 
+          else if(x === "windows"){
+            this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
+              let regex = new RegExp(x, "i");
+              return regex.test(t.telefono.sistema);
+            })            
+          }
+          else if(x === "ios"){
+            this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
+              let regex = new RegExp(x, "i");
+              return regex.test(t.telefono.sistema);
+            })            
+          }
+          else if(x === "harmonyos"){
+            this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
+              let regex = new RegExp(x, "i");
+              return regex.test(t.telefono.sistema);
+            })            
+          }
+        })        
+      }
+
+      // Filtrar por pantalla
+
+      if(this.filtrosPantallas.length > 0){
+        this.filtrosPantallas = this.filtrosPantallas.filter(x => {
+          if(x === "6"){
+            this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
+              let regex = new RegExp(x, "i");
+              return regex.test(t.telefono.pantalla);
+            })
+          } 
+          else if(x === "6"){
+            this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
+              let regex = new RegExp(x, "i");
+              return regex.test(t.telefono.pantalla);
+            })            
+          }
+          else if(x === "6"){
+            this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
+              let regex = new RegExp(x, "i");
+              return regex.test(t.telefono.pantalla);
+            })            
+          }
+        })        
+      }      
+
+      // Filtrar por estado
+
       if(this.estado === false){
         this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
           let regex = new RegExp("usado", "i");
@@ -209,6 +270,14 @@ export default {
     bus.$on("filtroMarcas", (marcas) => {
       this.filtrosMarcas = marcas;
       this.filtrarAnuncios();
+    }),
+    bus.$on("filtroSistemas", (sistemas) => {
+      this.filtrosSistemas = sistemas;
+      this.filtrarAnuncios();
+    }),
+    bus.$on("filtroPantallas", (pantallas) => {
+      this.filtrosPantallas = pantallas;
+      this.filtrosAnuncios();
     })
   }
 }

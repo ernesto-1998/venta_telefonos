@@ -134,9 +134,22 @@
                 id="flexCheckChecked"
               />
               <label class="form-check-label" for="flexCheckChecked">
-                <b>Ios</b>
+                <b>IOS</b>
               </label>
             </div>
+
+            <div class="form-check pb-2">
+              <input
+                class="form-check-input"
+                v-model="sistemas"
+                type="checkbox"
+                value="harmonyos"
+                id="flexCheckChecked"
+              />
+              <label class="form-check-label" for="flexCheckChecked">
+                <b>harmonyOS</b>
+              </label>
+            </div>            
           </div>
         </div>
       </div>
@@ -164,7 +177,7 @@
                 class="form-check-input"
                 v-model="pantallas"
                 type="checkbox"
-                value="5"
+                value="5.5"
                 id="flexCheckChecked"
               />
               <label class="form-check-label" for="flexCheckChecked">
@@ -228,7 +241,7 @@ export default {
 <style scoped>
   .color-fondo{
     background-color: #ffcc35; 
-    height: 620px; 
+    height: 650px; 
     border: 10px ridge #ffcc35;
   }
 

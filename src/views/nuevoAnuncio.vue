@@ -97,10 +97,10 @@
                       <option disabled value="">
                         Seleccione un sistema operativo
                       </option>
-                      <option value="Ios">Ios</option>
-                      <option value="Android">Android</option>
-                      <option value="Windows">Windows</option>
-                      <option value="Harmony OS">Harmony OS</option>
+                      <option value="ios">Ios</option>
+                      <option value="android">Android</option>
+                      <option value="windows">Windows</option>
+                      <option value="harmonyos">Harmony OS</option>
                     </select>
                   </div>
                 </div>
