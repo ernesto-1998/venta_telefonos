@@ -93,11 +93,13 @@ export default {
     },
     methods: {
         filtrarAnuncios(){
-            if(this.texto){
               bus.$emit('buscarCard', this.texto)
-            }
         }
     },
+
+    updated(){
+      this.filtrarAnuncios();
+    }
 }
 </script>
 

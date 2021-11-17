@@ -6,8 +6,8 @@
                     <label for="" class="me-2"> <b> Ordenar por: </b>  </label>
                 </div>
                 <div class="col d-flex my-2">
-                    <button :click="filtrarPrecio()" class="btn btn-primary btn-lg me-3">Precio</button>
-                    <button :click="filtrarFecha()" class="btn btn-danger btn-lg">Fecha</button>
+                    <button @click="filtrarPrecio" class="btn btn-primary btn-lg me-3">Precio</button>
+                    <button @click="filtrarFecha" class="btn btn-danger btn-lg">Fecha</button>
                 </div>
             </div> 
         </div>       
@@ -20,10 +20,10 @@ export default {
     name: 'conditionalFecha',
     methods: {
         filtrarPrecio(){
-            bus.$emit('filtrarPrecio')
+            bus.$emit("filtrarPrecio")
         },
         filtrarFecha(){
-            bus.$emit('filtrarFecha')
+            bus.$emit("filtrarFecha")
         }
     }
 }

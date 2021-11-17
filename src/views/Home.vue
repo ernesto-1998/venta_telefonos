@@ -57,22 +57,24 @@ export default {
     return{
       anuncios: [],
       foto: null,
+      textoNavbar: "",
       filtrarPrecio: true,
-      anunciosFiltrados: []
+      filtrarFecha: true,
+      anunciosFiltrados: [],
     };
   },
   methods:{
-    traerAnuncios(){
+    async traerAnuncios(){
       try {
         this.anuncios = []
-        db.collection('anuncios').get()
+      await db.collection('anuncios').get()
         .then((data) => {
         data.forEach(async (documentos) => {
           this.foto = await st.ref().child(documentos.id + "/" + "1").getDownloadURL();
           let anuncio = {
             id: documentos.id,
             nombre: documentos.data().nombre,
-            precio: documentos.data().precio,
+            precio: parseInt(documentos.data().precio),
             telefonoContacto: documentos.data().telefonoContacto,
             titulo: documentos.data().titulo,
             descripcion: documentos.data().descripcion,
@@ -96,9 +98,18 @@ export default {
 
   // Seccion de filtros
 
-    filtrar_precios(){
-      this.filtrarPrecio = !this.filtrarPrecio
+    filtrarAnuncios(){
       this.anunciosFiltrados = this.anuncios
+      if (this.textoNavbar !== "") {
+        this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
+          let regex = new RegExp(this.textoNavbar, "i");
+          return regex.test(t.telefono.marca);
+        });
+      }else if(this.textoNavbar === ""){
+        this.anunciosFiltrados = this.anuncios
+      }
+
+      if(this.filtrarPrecio === false){
         this.anunciosFiltrados = this.anunciosFiltrados.sort((p1, p2) => {
           if (p1.precio > p2.precio) {
             return 1;
@@ -107,17 +118,36 @@ export default {
             return -1;
           }
           return 0;
-        });      
+        }); 
+      } else if(this.filtrarPrecio === true){
+        this.anunciosFiltrados = this.anunciosFiltrados.sort((p1, p2) => {
+          if (p2.precio > p1.precio) {
+            return 1;
+          }
+          if (p2.precio < p1.precio) {
+            return -1;
+          }
+          return 0;
+        });        
+      }    
     }
   },
   async created(){
-    await this.traerAnuncios()
-    this.filtrarAnuncios()
+    await this.traerAnuncios();
+    this.filtrarAnuncios();
   },
 
   mounted(){
-    bus.$on('filtrarPrecio', ()=>{
-      
+    bus.$on("filtrarPrecio", ()=>{
+      this.filtrarPrecio = !this.filtrarPrecio
+      this.filtrarAnuncios();
+    }),
+    bus.$on("filtrarFecha", ()=>{
+      this.filtrarFecha = !this.filtrarFecha
+    }),
+    bus.$on("buscarCard", (data) => {
+      this.textoNavbar = data;
+      this.filtrarAnuncios();
     })
   }
 }
