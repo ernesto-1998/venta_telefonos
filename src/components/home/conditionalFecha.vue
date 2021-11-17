@@ -6,8 +6,8 @@
                     <label for="" class="me-2"> <b> Ordenar por: </b>  </label>
                 </div>
                 <div class="col d-flex my-2">
-                    <button class="btn btn-primary btn-lg me-3">Precio</button>
-                    <button class="btn btn-danger btn-lg">Fecha</button>
+                    <button :click="filtrarPrecio()" class="btn btn-primary btn-lg me-3">Precio</button>
+                    <button :click="filtrarFecha()" class="btn btn-danger btn-lg">Fecha</button>
                 </div>
             </div> 
         </div>       

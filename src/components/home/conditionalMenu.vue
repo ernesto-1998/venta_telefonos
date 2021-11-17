@@ -1,6 +1,6 @@
 <template>
   <div
-    class="col-2 ms-4 d-none d-lg-block d-md-block color-fondo"
+    class="col-2 ms-3 d-none d-lg-block d-md-block color-fondo"
   >
     <div class="row mt-3">
       <div class="col">
@@ -188,7 +188,7 @@ export default {
 <style scoped>
   .color-fondo{
     background-color: #ffcc35; 
-    /* height: 610px;  */
+    height: 620px; 
     border: 10px ridge #ffcc35;
   }
 

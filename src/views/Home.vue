@@ -23,7 +23,7 @@
         <!-- FILA DE CARDS -->
 
           <div class="row">
-            <div class="mt-3 col-md-3 col-xs-12 col-sm-6" v-for="anuncio in anuncios" :key="anuncio.id">
+            <div class="mt-3 col-md-3 col-xs-12 col-sm-6" v-for="anuncio in anunciosFiltrados" :key="anuncio.id">
               <card :anuncio="anuncio"/>
             </div>
           </div>
@@ -40,6 +40,7 @@ import conditionalPrecios from '@/components/home/conditionalPrecios'
 import conditionalFecha from '@/components/home/conditionalFecha'
 import card from '../components/home/card'
 import {db,st} from '../firebase'
+import {bus} from '../main'
 import swal from 'sweetalert'
 
 
@@ -56,6 +57,8 @@ export default {
     return{
       anuncios: [],
       foto: null,
+      filtrarPrecio: true,
+      anunciosFiltrados: []
     };
   },
   methods:{
@@ -76,7 +79,7 @@ export default {
             foto: this.foto,
             telefono: {
               estado: documentos.data().telefono.estado,
-              marca: documentos.data().telefono.marca,
+              marca: documentos.data().telefono.marca.toLowerCase(),
               modelo: documentos.data().telefono.modelo,
               pantalla: documentos.data().telefono.pantalla,
               rom: documentos.data().telefono.rom,
@@ -89,10 +92,33 @@ export default {
       } catch (error) {
         console.log(error)
       }
+    },
+
+  // Seccion de filtros
+
+    filtrar_precios(){
+      this.filtrarPrecio = !this.filtrarPrecio
+      this.anunciosFiltrados = this.anuncios
+        this.anunciosFiltrados = this.anunciosFiltrados.sort((p1, p2) => {
+          if (p1.precio > p2.precio) {
+            return 1;
+          }
+          if (p1.precio < p2.precio) {
+            return -1;
+          }
+          return 0;
+        });      
     }
   },
   async created(){
     await this.traerAnuncios()
+    this.filtrarAnuncios()
+  },
+
+  mounted(){
+    bus.$on('filtrarPrecio', ()=>{
+      
+    })
   }
 }
 </script>
