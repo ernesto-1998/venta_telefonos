@@ -207,13 +207,20 @@ export default {
     esNuevo(){
       bus.$emit("esNuevo")
     },
-    filtrosMenu(){
-      bus.$emit("filtrarMenu" )
+    filtroMarcas(){
+      bus.$emit("filtroMarcas", this.marcas)
+    },
+    filtroSistemas(){
+      bus.$emit("filtroSistemas", this.sistemas)
+    },
+    filtroPantallas(){
+      bus.$emit("filtroPantallas", this.pantallas)
     }
   },
   updated(){
-    
-    console.log(this.marcas)
+    this.filtroMarcas();
+    this.filtroSistemas();
+    this.filtroPantallas();
   }
 };
 </script>

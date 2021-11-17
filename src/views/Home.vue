@@ -60,6 +60,7 @@ export default {
       textoNavbar: "",
       filtrarPrecio: true,
       filtrarFecha: true,
+      filtrosMarcas: "",
       estado: null,
       anunciosFiltrados: [],
     };
@@ -131,7 +132,42 @@ export default {
           }
           return 0;
         });        
-      } 
+      }
+
+      // Filtros marca
+      
+      if(this.filtrosMarcas[0] === "samsung" || this.filtrosMarcas[1] === "samsung" || this.filtrosMarcas[2] === "samsung" || this.filtrosMarcas[3] === "samsung" || this.filtrosMarcas[4] === "samsung"){
+        this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
+          let regex = new RegExp("samsung", "i");
+          return regex.test(t.telefono.marca);
+        });
+
+      }else if(this.filtrosMarcas[0] === "huawei" || this.filtrosMarcas[1] === "huawei" || this.filtrosMarcas[2] === "huawei" || this.filtrosMarcas[3] === "huawei" || this.filtrosMarcas[4] === "huawei"){
+        this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
+          let regex = new RegExp("huawei", "i");
+          return regex.test(t.telefono.marca);
+        });        
+      }else if(this.filtrosMarcas[0] === "nokia" || this.filtrosMarcas[1] === "nokia" || this.filtrosMarcas[2] === "nokia" || this.filtrosMarcas[3] === "nokia" || this.filtrosMarcas[4] === "nokia"){
+        this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
+          let regex = new RegExp("nokia", "i");
+          return regex.test(t.telefono.marca);
+        }); 
+      }else if(this.filtrosMarcas[0] === "iphone" || this.filtrosMarcas[1] === "iphone" || this.filtrosMarcas[2] === "iphone" || this.filtrosMarcas[3] === "iphone" || this.filtrosMarcas[4] === "iphone"){
+        console.log("veamos si entra al iphone")
+        this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
+          let regex = new RegExp("iphone", "i");
+          return regex.test(t.telefono.marca);
+        });         
+      }else if(this.filtrosMarcas[0] === "xiaomi" || this.filtrosMarcas[1] === "xiaomi" || this.filtrosMarcas[2] === "xiaomi" || this.filtrosMarcas[3] === "xiaomi" || this.filtrosMarcas[4] === "xiaomi"){
+        this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
+          let regex = new RegExp("xiaomi", "i");
+          return regex.test(t.telefono.marca);
+        });         
+      }
+      // else if(this.filtrosMarcas === ""){
+      //   this.anunciosFiltrados = this.anuncios
+      // }
+
       if(this.estado === false){
         this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
           let regex = new RegExp("usado", "i");
@@ -145,6 +181,7 @@ export default {
       }
     }
   },
+
   async created(){
     await this.traerAnuncios();
     this.filtrarAnuncios();
@@ -161,9 +198,13 @@ export default {
     bus.$on("buscarCard", (data) => {
       this.textoNavbar = data;
       this.filtrarAnuncios();
-    })
+    }),
     bus.$on("esNuevo", () => {
       this.estado = !this.estado;
+      this.filtrarAnuncios();
+    }),
+    bus.$on("filtroMarcas", (marcas) => {
+      this.filtrosMarcas = marcas;
       this.filtrarAnuncios();
     })
   }
