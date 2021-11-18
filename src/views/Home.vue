@@ -207,28 +207,28 @@ export default {
 
       // Filtrar por pantalla
 
-      if(this.filtrosPantallas.length > 0){
-        this.filtrosPantallas = this.filtrosPantallas.filter(x => {
-          if(x === "6"){
-            this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
-              let regex = new RegExp(x, "i");
-              return regex.test(t.telefono.pantalla);
-            })
-          } 
-          else if(x === "6"){
-            this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
-              let regex = new RegExp(x, "i");
-              return regex.test(t.telefono.pantalla);
-            })            
-          }
-          else if(x === "6"){
-            this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
-              let regex = new RegExp(x, "i");
-              return regex.test(t.telefono.pantalla);
-            })            
-          }
-        })        
-      }      
+      // if(this.filtrosPantallas.length > 0){
+      //   this.filtrosPantallas = this.filtrosPantallas.filter(x => {
+      //     if(x === "6"){
+      //       this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
+      //         let regex = new RegExp(x, "i");
+      //         return regex.test(t.telefono.pantalla);
+      //       })
+      //     } 
+      //     else if(x === "6"){
+      //       this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
+      //         let regex = new RegExp(x, "i");
+      //         return regex.test(t.telefono.pantalla);
+      //       })            
+      //     }
+      //     else if(x === "6"){
+      //       this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
+      //         let regex = new RegExp(x, "i");
+      //         return regex.test(t.telefono.pantalla);
+      //       })            
+      //     }
+      //   })        
+      // }      
 
       // Filtrar por estado
 
@@ -274,11 +274,11 @@ export default {
     bus.$on("filtroSistemas", (sistemas) => {
       this.filtrosSistemas = sistemas;
       this.filtrarAnuncios();
-    }),
-    bus.$on("filtroPantallas", (pantallas) => {
-      this.filtrosPantallas = pantallas;
-      this.filtrosAnuncios();
     })
+    // bus.$on("filtroPantallas", (pantallas) => {
+    //   this.filtrosPantallas = pantallas;
+    //   this.filtrosAnuncios();
+    // })
   }
 }
 </script>
