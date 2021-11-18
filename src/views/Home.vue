@@ -71,8 +71,7 @@ export default {
     async traerAnuncios(){
       try {
         this.anuncios = []
-      await db.collection('anuncios').get()
-        .then((data) => {
+     const data = await db.collection('anuncios').get()       
         data.forEach(async (documentos) => {
           this.foto = await st.ref().child(documentos.id + "/" + "1").getDownloadURL();
           let anuncio = {
@@ -94,17 +93,31 @@ export default {
             }
           }
           this.anuncios.push(anuncio);
-        });          
-        });      
+        });         
+            
       } catch (error) {
         console.log(error)
       }
     },
 
+    // tamañoArray(arr) {
+    //   var count = 0;
+    //   for (var k in arr) {
+    //     if (arr.hasOwnProperty(k)) {
+    //       count++;
+    //     }
+    //   }
+    //   return count;
+    // },
+
   // Seccion de filtros
 
     filtrarAnuncios(){
       this.anunciosFiltrados = this.anuncios
+      // const frutas = ['pera', 'manzana', 'piña']
+      // const frutasPro = [{name: "pera"}, {name: "manzan"}, {name: "piña"}]
+      console.log(this.anunciosFiltrados.length)
+      // console.log(frutasPro)
       if (this.textoNavbar !== "") {
         this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
           let regex = new RegExp(this.textoNavbar, "i");
