@@ -68,11 +68,10 @@ export default {
     };
   },
   methods:{
-    async traerAnuncios(){
+    traerAnuncios(){
+      this.anuncios = []
       try {
-        this.anuncios = []
-      await db.collection('anuncios').get()
-        .then((data) => {
+        const data = this.trayendoDataAnuncios();
         data.forEach(async (documentos) => {
           this.foto = await st.ref().child(documentos.id + "/" + "1").getDownloadURL();
           let anuncio = {
@@ -94,8 +93,16 @@ export default {
             }
           }
           this.anuncios.push(anuncio);
-        });          
-        });      
+        });              
+      } catch (error) {
+        console.log(error)
+      }
+    },
+
+    async trayendoDataAnuncios(){
+      try {
+       return await db.collection('anuncios').get()
+       
       } catch (error) {
         console.log(error)
       }
