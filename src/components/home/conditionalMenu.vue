@@ -190,7 +190,7 @@
                 class="form-check-input"
                 v-model="pantallas"
                 type="checkbox"
-                value="5"
+                value="5.0"
                 id="flexCheckChecked"
               />
               <label class="form-check-label" for="flexCheckChecked">
