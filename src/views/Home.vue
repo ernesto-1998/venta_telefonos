@@ -68,11 +68,13 @@ export default {
     };
   },
   methods:{
-    traerAnuncios(){
+    async traerAnuncios(){
       this.anuncios = []
       try {
-        const data = this.trayendoDataAnuncios();
-        data.forEach(async (documentos) => {
+        const data = await db.collection('anuncios').get()
+        // console.log(data)
+        for(const documentos of data.docs) {
+          // console.log(documentos)
           this.foto = await st.ref().child(documentos.id + "/" + "1").getDownloadURL();
           let anuncio = {
             id: documentos.id,
@@ -92,8 +94,9 @@ export default {
               ram: documentos.data().telefono.ram,
             }
           }
-          this.anuncios.push(anuncio);
-        });              
+          this.anuncios.push(anuncio);          
+
+        };              
       } catch (error) {
         console.log(error)
       }
@@ -112,6 +115,7 @@ export default {
 
     filtrarAnuncios(){
       this.anunciosFiltrados = this.anuncios
+      console.log(this.anunciosFiltrados.length)
       if (this.textoNavbar !== "") {
         this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
           let regex = new RegExp(this.textoNavbar, "i");
