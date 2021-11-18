@@ -75,7 +75,7 @@ export default {
         // console.log(data)
         for(const documentos of data.docs) {
           // console.log(documentos)
-          this.foto = await st.ref().child(documentos.id + "/" + "1").getDownloadURL();
+          
           let anuncio = {
             id: documentos.id,
             nombre: documentos.data().nombre,
@@ -83,7 +83,7 @@ export default {
             telefonoContacto: documentos.data().telefonoContacto,
             titulo: documentos.data().titulo,
             descripcion: documentos.data().descripcion,
-            foto: this.foto,
+            foto: await st.ref().child(documentos.id + "/" + "1").getDownloadURL(),
             telefono: {
               estado: documentos.data().telefono.estado,
               marca: documentos.data().telefono.marca.toLowerCase(),
@@ -102,20 +102,10 @@ export default {
       }
     },
 
-    async trayendoDataAnuncios(){
-      try {
-       return await db.collection('anuncios').get()
-       
-      } catch (error) {
-        console.log(error)
-      }
-    },
-
   // Seccion de filtros
 
     filtrarAnuncios(){
       this.anunciosFiltrados = this.anuncios
-      console.log(this.anunciosFiltrados.length)
       if (this.textoNavbar !== "") {
         this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
           let regex = new RegExp(this.textoNavbar, "i");
