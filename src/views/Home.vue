@@ -124,9 +124,6 @@ export default {
           return regex.test(t.telefono.marca);
         });      
       }  
-      else if(this.textoNavbar === ""){
-        this.anunciosFiltrados = this.anuncios
-      }
 
       if(this.filtrarPrecio === false){
         this.anunciosFiltrados = this.anunciosFiltrados.sort((p1, p2) => {
