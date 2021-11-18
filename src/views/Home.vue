@@ -69,31 +69,37 @@ export default {
   },
   methods:{
     async traerAnuncios(){
+      this.anuncios = []
       try {
-        this.anuncios = []
-     const data = await db.collection('anuncios').get()       
-        data.forEach(async (documentos) => {
-          this.foto = await st.ref().child(documentos.id + "/" + "1").getDownloadURL();
-          let anuncio = {
-            id: documentos.id,
-            nombre: documentos.data().nombre,
-            precio: parseInt(documentos.data().precio),
-            telefonoContacto: documentos.data().telefonoContacto,
-            titulo: documentos.data().titulo,
-            descripcion: documentos.data().descripcion,
-            foto: this.foto,
-            telefono: {
-              estado: documentos.data().telefono.estado,
-              marca: documentos.data().telefono.marca.toLowerCase(),
-              sistema: documentos.data().telefono.sistema,
-              modelo: documentos.data().telefono.modelo,
-              pantalla: documentos.data().telefono.pantalla,
-              rom: documentos.data().telefono.rom,
-              ram: documentos.data().telefono.ram,
-            }
-          }
-          this.anuncios.push(anuncio);
-        });         
+        const data = await db.collection('anuncios').get()       
+            data.forEach((documentos) => {
+              // this.foto = await st.ref().child(documentos.id + "/" + "1").getDownloadURL();
+              let anuncio = {
+                id: documentos.id,
+                nombre: documentos.data().nombre,
+                precio: parseInt(documentos.data().precio),
+                telefonoContacto: documentos.data().telefonoContacto,
+                titulo: documentos.data().titulo,
+                descripcion: documentos.data().descripcion,
+                // foto: await st.ref().child(documentos.id + "/" + "1").getDownloadURL(),
+                telefono: {
+                  estado: documentos.data().telefono.estado,
+                  marca: documentos.data().telefono.marca.toLowerCase(),
+                  sistema: documentos.data().telefono.sistema,
+                  modelo: documentos.data().telefono.modelo,
+                  pantalla: documentos.data().telefono.pantalla,
+                  rom: documentos.data().telefono.rom,
+                  ram: documentos.data().telefono.ram,
+                }
+              }
+              this.anuncios.push(anuncio);
+            });
+            for (let anuncio of this.anuncios) {
+              anuncio.foto = await st
+                .ref()
+                .child(anuncio.id + "/1")
+                .getDownloadURL();
+            }         
             
       } catch (error) {
         console.log(error)
