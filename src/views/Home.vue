@@ -65,7 +65,7 @@ export default {
       filtrosMarcas: [],
       filtrosSistemas: [],
       filtrosPantallas: [],
-      estado: null,
+      estado: false,
       anunciosFiltrados: [],
     };
   },
@@ -104,7 +104,7 @@ export default {
 
     filtrarAnuncios(){
       this.anunciosFiltrados = this.anuncios
-      console.log(this.anunciosFiltrados.length)
+
       if (this.textoNavbar !== "") {
         this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
           let regex = new RegExp(this.textoNavbar, "i");
@@ -136,19 +136,20 @@ export default {
 
       // Filtrar Desde Hasta
 
-      if(this.filtrarDesde !== ""){
+      if(this.filtrarDesde !== "" && this.filtrarHasta !== ""){
         parseInt(this.filtrarDesde)
+        parseInt(this.filtrarHasta)
         this.anunciosFiltrados = this.anunciosFiltrados.filter(x => {
-          return x.precio > this.filtrarDesde
+          return ((x.precio > this.filtrarDesde) && (x.precio < this.filtrarHasta))
         })
       }
 
-      if(this.filtrarHasta !== ""){
-        parseInt(this.filtrarHasta)
-        this.anunciosFiltrados = this.anunciosFiltrados.filter(x => {
-          return x.precio < this.filtrarHasta
-        })
-      }
+      // if(this.filtrarHasta !== ""){
+      //   parseInt(this.filtrarHasta)
+      //   this.anunciosFiltrados = this.anunciosFiltrados.filter(x => {
+      //     return x.precio < this.filtrarHasta
+      //   })
+      // }
 
       // Filtros marca
       

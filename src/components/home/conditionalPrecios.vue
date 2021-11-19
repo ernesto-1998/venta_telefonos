@@ -21,8 +21,8 @@ export default {
     name: 'conditionalPrecios',
     data(){
         return{
-            desde: null,
-            hasta: null,
+            desde: "",
+            hasta: "",
             condicionalesPrecio: []
         };
     },
