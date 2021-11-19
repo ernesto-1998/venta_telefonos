@@ -6,8 +6,8 @@
                     <h4 for="" class="me-2"> <b> Ordenar por: </b>  </h4>
                 </div>
                 <div class="col d-flex justify-content-evenly my-2">
-                    <button @click="filtrarPrecio" class="btn btn-primary btn-lg"><i v-if="arrowButton" class="bi bi-arrow-down me-1"></i><i v-if="!arrowButton" class="bi bi-arrow-up me-1"></i>Precio</button>
-                    <button @click="filtrarFecha" class="btn btn-danger btn-lg">Fecha</button>
+                    <button @click="filtrarPrecio" class="btn btn-primary btn-md"><i v-if="arrowButton" class="bi bi-arrow-down me-1"></i><i v-if="!arrowButton" class="bi bi-arrow-up me-1"></i>Precio</button>
+                    <button @click="filtrarFecha" class="btn btn-danger btn-md">Fecha</button>
                     <div
                         
                         @click="cambiarFlecha"
@@ -15,8 +15,8 @@
                         data-bs-toggle="collapse"
                         data-bs-target="#menuNavegacion1"
                     >
-                        <i v-if="toggler" class="bi bi-arrow-down-circle-fill" style="font-size: 3rem; color: black;"></i>
-                        <i v-if="!toggler" class="bi bi-arrow-up-circle-fill" style="font-size: 3rem; color: black;"></i>
+                        <i v-if="toggler" class="bi bi-arrow-down-circle-fill" style="font-size: 2rem; color: black;"></i>
+                        <i v-if="!toggler" class="bi bi-arrow-up-circle-fill" style="font-size: 2rem; color: black;"></i>
                     </div>                               
                 </div>
                 <div id="menuNavegacion1" class="collapse navbar-collapse d-md-none mt-2" >                      
