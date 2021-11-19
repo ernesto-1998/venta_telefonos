@@ -1,6 +1,6 @@
 <template>
   <div
-    class="col-2 ms-3 d-none d-lg-block d-md-block color-fondo"
+    class="color-fondo"
   >
     <div class="row mt-3">
       <div class="col">
