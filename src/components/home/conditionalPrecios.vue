@@ -1,5 +1,5 @@
 <template>
-    <div class="card color-fondo-interno">
+    <div class="card color-fondo-interno" style="height: 100%;">
         <div class="container">
             <div class="row d-flex justify-content-around">
                 <div class="col my-2">

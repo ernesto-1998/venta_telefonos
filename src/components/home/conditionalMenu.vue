@@ -4,7 +4,7 @@
   >
     <div class="row mt-3">
       <div class="col">
-        <div class="form-check form-switch">
+        <div class="form-check form-switch ms-2">
           <input
           @click="esNuevo"
             class="form-check-input"
@@ -147,7 +147,7 @@
                 id="flexCheckChecked"
               />
               <label class="form-check-label" for="flexCheckChecked">
-                <b>harmonyOS</b>
+                <b>harmony</b>
               </label>
             </div>            
           </div>

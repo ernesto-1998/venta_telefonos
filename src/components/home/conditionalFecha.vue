@@ -3,27 +3,25 @@
         <div class="container">
             <div class="row">
                 <div class="col my-2">
-                    <label for="" class="me-2"> <b> Ordenar por: </b>  </label>
+                    <h4 for="" class="me-2"> <b> Ordenar por: </b>  </h4>
                 </div>
-                <div class="col d-flex my-2">
-                    <button @click="filtrarPrecio" class="btn btn-primary btn-lg me-3">Precio</button>
+                <div class="col d-flex justify-content-evenly my-2">
+                    <button @click="filtrarPrecio" class="btn btn-primary btn-lg"><i v-if="arrowButton" class="bi bi-arrow-down me-1"><i v-if="!arrowButton" class="bi bi-arrow-up me-1"></i></i>Precio</button>
                     <button @click="filtrarFecha" class="btn btn-danger btn-lg">Fecha</button>
-                    <button
-                        type="button"
-                        class="navbar-toggler border border-2 border-dark d-md-none"
+                    <div
+                        
+                        @click="cambiarFlecha"
+                        class="d-md-none ms-2"
                         data-bs-toggle="collapse"
-                        data-bs-target="#menuNavegacion12"
+                        data-bs-target="#menuNavegacion1"
                     >
-                        <span class="navbar-toggler-icon"></span>
-                    </button>                               
+                        <i v-if="toggler" class="bi bi-arrow-down-circle-fill" style="font-size: 3rem; color: black;"></i>
+                        <i v-if="!toggler" class="bi bi-arrow-up-circle-fill" style="font-size: 3rem; color: black;"></i>
+                    </div>                               
                 </div>
-                                    <div id="menuNavegacion12" class="collapse navbar-collapse d-md-none" >
-                        <ul class="navbar-nav ms-3 d-lg-none d-md-none" id="navbarBotones">
-                            <li class="nav-item">
-                                <conditionalMenu />
-                            </li>
-                        </ul>                                          
-                    </div> 
+                <div id="menuNavegacion1" class="collapse navbar-collapse d-md-none mt-2" >                      
+                    <conditionalMenu />                                                                 
+                </div> 
             </div> 
         </div>       
     </div>
@@ -37,8 +35,18 @@ export default {
     components:{
         conditionalMenu
     },
+    data(){
+        return{
+            toggler: true,
+            arrowButton: true
+        };
+    },
     methods: {
+        cambiarFlecha(){
+            this.toggler = !this.toggler
+        },
         filtrarPrecio(){
+            this.arrowButton = !this.arrowButton
             bus.$emit("filtrarPrecio")
         },
         filtrarFecha(){

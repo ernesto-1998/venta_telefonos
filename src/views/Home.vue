@@ -2,7 +2,7 @@
   <div class="home">
     <div class="container-fluid">
       <div class="row mt-2">
-        <div class="col-2 ms-3 d-none d-lg-block d-md-block">
+        <div class="col-2 d-none d-lg-block d-md-block">
           <conditional-menu/>
         </div>
 
