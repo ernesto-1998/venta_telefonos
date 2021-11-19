@@ -4,11 +4,11 @@
             <div class="row d-flex justify-content-around">
                 <div class="col my-2">
                     <label for="" class="me-2"> <b> Desde: </b>  </label>
-                    <input type="number" v-model="desde">
+                    <input type="text" maxlength="5" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" v-model="desde">
                 </div>
                 <div class="col my-2">
                     <label for="" class="me-2"> <b> Hasta: </b> </label>
-                    <input type="number" v-model="hasta">
+                    <input type="text" maxlength="5" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" v-model="hasta">
                 </div>
             </div>
         </div>
