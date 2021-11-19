@@ -28,18 +28,18 @@ export default {
     },
 
     methods:{
-        enviarData(){
-            if(this.desde !== null && this.hasta !== null && this.desde !== "" && this.hasta !== ""){
-                console.log("se envio")
-                this.condicionalesPrecio.push({desde: this.desde, hasta: this.hasta})
-                bus.$emit('enviarPrecios', this.condicionalesPrecio)
-            }
-            
+        enviarDesde(){
+            bus.$emit("enviarDesde", this.desde)
+        },
+        enviarHasta(){
+            bus.$emit('enviarHasta', this.hasta)
         }
+            
     },
 
     updated(){
-        this.enviarData()
+        this.enviarDesde()
+        this.enviarHasta()
     }
 }
 </script>

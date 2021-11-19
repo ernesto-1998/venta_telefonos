@@ -60,6 +60,8 @@ export default {
       textoNavbar: "",
       filtrarPrecio: true,
       filtrarFecha: true,
+      filtrarDesde: "",
+      filtrarHasta: "",
       filtrosMarcas: [],
       filtrosSistemas: [],
       filtrosPantallas: [],
@@ -72,9 +74,7 @@ export default {
       this.anuncios = []
       try {
         const data = await db.collection('anuncios').get()
-        // console.log(data)
         for(const documentos of data.docs) {
-          // console.log(documentos)
           
           let anuncio = {
             id: documentos.id,
@@ -102,24 +102,9 @@ export default {
       }
     },
 
-    // tamañoArray(arr) {
-    //   var count = 0;
-    //   for (var k in arr) {
-    //     if (arr.hasOwnProperty(k)) {
-    //       count++;
-    //     }
-    //   }
-    //   return count;
-    // },
-
-  // Seccion de filtros
-
     filtrarAnuncios(){
       this.anunciosFiltrados = this.anuncios
-      // const frutas = ['pera', 'manzana', 'piña']
-      // const frutasPro = [{name: "pera"}, {name: "manzan"}, {name: "piña"}]
       console.log(this.anunciosFiltrados.length)
-      // console.log(frutasPro)
       if (this.textoNavbar !== "") {
         this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
           let regex = new RegExp(this.textoNavbar, "i");
@@ -147,6 +132,22 @@ export default {
           }
           return 0;
         });        
+      }
+
+      // Filtrar Desde Hasta
+
+      if(this.filtrarDesde !== ""){
+        parseInt(this.filtrarDesde)
+        this.anunciosFiltrados = this.anunciosFiltrados.filter(x => {
+          return x.precio > this.filtrarDesde
+        })
+      }
+
+      if(this.filtrarHasta !== ""){
+        parseInt(this.filtrarHasta)
+        this.anunciosFiltrados = this.anunciosFiltrados.filter(x => {
+          return x.precio < this.filtrarHasta
+        })
       }
 
       // Filtros marca
@@ -289,6 +290,14 @@ export default {
     }),
     bus.$on("filtroPantallas", (pantallas) => {
       this.filtrosPantallas = pantallas;
+      this.filtrarAnuncios();
+    }),
+    bus.$on("enviarDesde", (desde) => {
+      this.filtrarDesde = desde;
+      this.filtrarAnuncios();
+    }),
+    bus.$on("enviarHasta", (hasta) => {
+      this.filtrarHasta = hasta;
       this.filtrarAnuncios();
     })
   }
