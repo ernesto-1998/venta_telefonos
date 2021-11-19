@@ -65,7 +65,7 @@ export default {
       filtrosMarcas: [],
       filtrosSistemas: [],
       filtrosPantallas: [],
-      estado: false,
+      estado: null,
       anunciosFiltrados: [],
     };
   },
@@ -246,12 +246,12 @@ export default {
 
       // Filtrar por estado
 
-      if(this.estado === false){
+      if(this.estado === true){
         this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
           let regex = new RegExp("usado", "i");
           return regex.test(t.telefono.estado);
         });          
-      }else if(this.estado === true){
+      }else if(this.estado === false){
         this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
           let regex = new RegExp("nuevo", "i");
           return regex.test(t.telefono.estado);
