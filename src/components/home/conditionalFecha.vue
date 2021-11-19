@@ -6,7 +6,7 @@
                     <h4 for="" class="me-2"> <b> Ordenar por: </b>  </h4>
                 </div>
                 <div class="col d-flex justify-content-evenly my-2">
-                    <button @click="filtrarPrecio" class="btn btn-primary btn-lg"><i v-if="arrowButton" class="bi bi-arrow-down me-1"><i v-if="!arrowButton" class="bi bi-arrow-up me-1"></i></i>Precio</button>
+                    <button @click="filtrarPrecio" class="btn btn-primary btn-lg"><i v-if="arrowButton" class="bi bi-arrow-down me-1"></i><i v-if="!arrowButton" class="bi bi-arrow-up me-1"></i>Precio</button>
                     <button @click="filtrarFecha" class="btn btn-danger btn-lg">Fecha</button>
                     <div
                         
@@ -38,7 +38,7 @@ export default {
     data(){
         return{
             toggler: true,
-            arrowButton: true
+            arrowButton: false
         };
     },
     methods: {
