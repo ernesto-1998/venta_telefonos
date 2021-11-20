@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="container-fluid">
+    <div class="container-fluid" v-if="visible === true">
       <div class="row mt-2">
         <div class="col-2 d-none d-lg-block d-md-block">
           <conditional-menu/>
@@ -47,6 +47,7 @@
 
       </div>
     </div>
+    <b-spinner v-else style="width: 9rem; height: 9rem; margin-top: 250px"></b-spinner>
   </div>
 </template>
 
@@ -71,6 +72,7 @@ export default {
   },
   data(){
     return{
+      visible: false,
       anuncios: [],
       foto: null,
       textoNavbar: "",
@@ -121,7 +123,8 @@ export default {
           }
           this.anuncios.push(anuncio);          
 
-        };              
+        };
+        this.visible = true;              
       } catch (error) {
         console.log(error)
       }
