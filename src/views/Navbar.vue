@@ -67,10 +67,10 @@
             <router-link :to="{name: 'nuevoAnuncio'}" class="nav-link"><b>Nuevo Anuncio</b></router-link>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link"><b>Carrito</b></a>
+            <a href="#" class="nav-link"><b>Estadisticas</b></a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link"><b>Estadisticas</b></a>
+            <a href="#" class="nav-link"><b>Carrito</b></a>
           </li>
         </ul>
       </div>

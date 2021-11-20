@@ -47,7 +47,7 @@
 
       </div>
     </div>
-    <b-spinner v-else style="width: 9rem; height: 9rem; margin-top: 250px"></b-spinner>
+    <b-spinner type="grow" variant="danger" v-else style="width: 15rem; height: 15rem; margin-top: 150px"></b-spinner>
   </div>
 </template>
 

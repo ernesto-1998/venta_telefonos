@@ -220,7 +220,7 @@
                         <th scope="col">Tipo</th>
                       </tr>
                     </thead>
-                    <tbody >
+                    <tbody v-if="visible === true">
                       <tr v-for="(value, index) in metaDatosI" :key="index">
                         <td>{{index+1}}</td>
                         <td>{{ value.size }} kb</td>
@@ -228,6 +228,7 @@
                       </tr>
                     </tbody>
                   </table>
+                  <b-spinner v-if="visible === false" style="width: 5rem; height: 5rem;" class="ms-md-10 mt-md-3" variant="primary"></b-spinner>
                 </div>
 
                 <!-- COLUMNA 3 (CAROUSEL) -->
@@ -405,6 +406,7 @@ export default {
   },
   data() {
     return {
+      visible: true,
       contador: 1,
       contador2: 1,
       contador3: 1,
@@ -511,6 +513,7 @@ export default {
       if(this.imagenP !== null){
         if(this.imagenes.length < 4){
           try {
+            this.visible = false;
             const referencia = st.ref();
             let this2 = this;
             this2.imagenes2.push(this2.imagenP);
@@ -543,7 +546,7 @@ export default {
         .getDownloadURL()
         .then((url) => {
             this2.imagenes.push(url);
-
+            this.visible = true;
         });
 
       const metaDatos = await referencia
