@@ -25,8 +25,18 @@
         <!-- FILA DE CARDS -->
 
           <div class="row">
-            <div class="mt-3 col-md-3 col-xs-12 col-sm-6" v-for="anuncio in anunciosFiltrados" :key="anuncio.id">
+            <div class="mt-3 col-md-3 col-xs-12 col-sm-6" v-for="anuncio in anunciosPaginados" :key="anuncio.id">
               <card :anuncio="anuncio"/>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="col mt-2">
+              <b-pagination
+                v-model="paginaActual"
+                :total-rows="numeroPaginas"
+                :per-page="1"
+                @input="cambioPagina"               
+              ></b-pagination>              
             </div>
           </div>
         </div>
@@ -69,6 +79,11 @@ export default {
       filtrosPantallas: [],
       estado: null,
       anunciosFiltrados: [],
+      anunciosPorPagina: 4,
+      anunciosPaginados: [],
+      totalAnuncios: 0,
+      paginaActual: 1,
+      numeroPaginas: 0,
     };
   },
   methods:{
@@ -102,6 +117,14 @@ export default {
       } catch (error) {
         console.log(error)
       }
+    },
+
+    cambioPagina() {
+      console.log("entro al cambioPagina")
+      this.anunciosPaginados = this.anunciosFiltrados.slice(
+        this.paginaActual * this.anunciosPorPagina - this.anunciosPorPagina,
+        this.paginaActual * this.anunciosPorPagina
+      );
     },
 
     filtrarAnuncios(){
@@ -259,6 +282,16 @@ export default {
           return regex.test(t.telefono.estado);
         });          
       }
+
+      this.paginaActual = 1;
+      this.total = this.anunciosFiltrados.length;
+      console.log(this.total)
+      this.numeroPaginas = Math.ceil(this.total / this.anunciosPorPagina);
+      console.log(this.numeroPaginas)
+      this.anunciosPaginados = this.anunciosFiltrados.slice(0, this.anunciosPorPagina);   
+      console.log(this.anunciosPaginados)   
+
+
     }
   },
 
