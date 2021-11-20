@@ -47,7 +47,13 @@
 
       </div>
     </div>
-    <b-spinner type="grow" variant="danger" v-else style="width: 15rem; height: 15rem; margin-top: 150px"></b-spinner>
+    <b-spinner class="d-md-none" type="grow" variant="warning" v-if="visible === false" style="width: 15rem; height: 15rem; margin-top: 150px"></b-spinner>
+    <!-- <img class="d-md-none" v-else src="https://i.gifer.com/D5Vu.gif" alt=""> -->
+    <div class="row d-none d-md-block">
+      <div class="col d-flex justify-content-center">
+        <img class="" src="https://cdn.dribbble.com/users/989157/screenshots/3939130/beer.gif" v-if="visible === false" alt="">
+      </div>
+    </div>
   </div>
 </template>
 
@@ -76,7 +82,7 @@ export default {
       anuncios: [],
       foto: null,
       textoNavbar: "",
-      filtrarPrecio: true,
+      filtrarPrecio: null,
       filtrarFecha: true,
       filtrarDesde: "",
       filtrarHasta: "",

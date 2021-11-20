@@ -38,7 +38,7 @@ export default {
     data(){
         return{
             toggler: true,
-            arrowButton: false
+            arrowButton: true       
         };
     },
     methods: {
