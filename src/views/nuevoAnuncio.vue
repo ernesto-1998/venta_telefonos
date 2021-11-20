@@ -224,7 +224,7 @@
                       <tr v-for="(value, index) in metaDatosI" :key="index">
                         <td>{{index+1}}</td>
                         <td>{{ value.size }} kb</td>
-                        <td>{{ value.type === 'image/jpeg' ? '.jpg' : '.png' }}</td>
+                        <td>{{ value.type === 'image/jpeg' ? '.jpg' : value.type === 'image/png' ? '.png': '.gif' }}</td>
                       </tr>
                     </tbody>
                   </table>
