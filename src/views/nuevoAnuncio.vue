@@ -423,6 +423,7 @@ export default {
         descripcion: "",
         precio: null,
         foto: null,
+        fecha: "",
         telefono: {
           estado: "",
           marca: "",
@@ -470,12 +471,13 @@ export default {
       if (this.validarTelefono() === true && this.validarAnuncio() === true) {
         if (this.imagenes2.length > 0){
           try {
+            this.anuncio.fecha = new Date();
             const query = await db.collection("anuncios").add(this.anuncio);
             this.id_anuncio = query.id;
             this.guardarImagenes(this.id_anuncio)
             swal({ title: "Anuncio Guardado!",
                   text: "El anuncio se ha guardado perfectamente!",
-                  icon: "success", timer: 2500, button: false, })
+                  icon: "success", timer: 2000, button: false, })
             setTimeout(() => {
               this.$router.push({name: 'Home'})
             }, 2500)
@@ -502,7 +504,7 @@ export default {
           this2.contador2 += 1;
         });
       }else{
-        swal("Error", "Debe incluir al menos una imagen en tu anuncio", "error")
+        swal("Error", "Debes incluir al menos una imagen en tu anuncio", "error")
       }
     },   
     

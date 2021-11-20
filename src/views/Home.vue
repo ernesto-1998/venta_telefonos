@@ -122,7 +122,7 @@ export default {
               marca: documentos.data().telefono.marca.toLowerCase(),
               sistema: documentos.data().telefono.sistema,
               modelo: documentos.data().telefono.modelo,
-              pantalla: documentos.data().telefono.pantalla,
+              pantalla: parseFloat(documentos.data().telefono.pantalla),
               rom: documentos.data().telefono.rom,
               ram: documentos.data().telefono.ram,
             }
@@ -273,20 +273,17 @@ export default {
         this.filtrosPantallas = this.filtrosPantallas.filter(x => {
           if(x === "6"){
             this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
-              let regex = new RegExp(x, "i");
-              return regex.test(t.telefono.pantalla);
+              return t.telefono.pantalla >= 6
             })
           } 
           else if(x === "5.5"){
             this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
-              let regex = new RegExp(x, "i");
-              return regex.test(t.telefono.pantalla);
+              return t.telefono.pantalla < 6 && t.telefono.pantalla >= 5.5
             })            
           }
-          else if(x === "5.0"){
+          else if(x === "5"){
             this.anunciosFiltrados = this.anunciosFiltrados.filter(t => {
-              let regex = new RegExp(x, "i");
-              return regex.test(t.telefono.pantalla);
+              return t.telefono.pantalla < 5.5
             })            
           }
         })        
