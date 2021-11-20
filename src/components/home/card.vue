@@ -1,6 +1,6 @@
 <template>
     <div class="card" style="height: 100%;">
-      <img :src="anuncio.foto" class="card-img-top" height="170px" alt="..." />
+      <router-link :to="/anuncio/ + anuncio.id"><img :src="anuncio.foto" class="card-img-top" height="170px" alt="..." /></router-link>
       <div class="card-body text-center border border-2 border-dark">
         <div class="row">
             <h4 style= "color: black;"><b>${{anuncio.precio}}</b></h4>
