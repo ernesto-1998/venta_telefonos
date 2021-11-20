@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import nuevoAnuncio from '../views/nuevoAnuncio.vue'
-import conditionalPrecios from '@/components/home/conditionalPrecios.vue'
+import anuncio from '../views/anuncio.vue'
 
 Vue.use(VueRouter)
 
@@ -17,6 +17,11 @@ const routes = [
     name: 'nuevoAnuncio',
     component: nuevoAnuncio
   },
+  {
+    path: '/anuncio/:id',
+    name: 'anuncio',
+    component: anuncio
+  }
 
 ]
 
