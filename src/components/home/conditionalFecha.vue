@@ -7,7 +7,7 @@
                 </div>
                 <div class="col d-flex justify-content-evenly my-2">
                     <button @click="filtrarPrecio" class="btn btn-primary btn-md"><i v-if="arrowButton" class="bi bi-arrow-down me-1"></i><i v-if="!arrowButton" class="bi bi-arrow-up me-1"></i>Precio</button>
-                    <button @click="filtrarFecha" class="btn btn-danger btn-md">Fecha</button>
+                    <button @click="filtrarFecha" class="btn btn-danger btn-md"><i v-if="arrowButton2" class="bi bi-arrow-down me-1"></i><i v-if="!arrowButton2" class="bi bi-arrow-up me-1"></i>Fecha</button>
                     <div
                         
                         @click="cambiarFlecha"
@@ -38,7 +38,8 @@ export default {
     data(){
         return{
             toggler: true,
-            arrowButton: true       
+            arrowButton: true,
+            arrowButton2: true       
         };
     },
     methods: {
@@ -50,6 +51,7 @@ export default {
             bus.$emit("filtrarPrecio")
         },
         filtrarFecha(){
+            this.arrowButton2 = !this.arrowButton2
             bus.$emit("filtrarFecha")
         }
     }

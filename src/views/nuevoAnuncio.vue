@@ -470,7 +470,7 @@ export default {
     async guardarAnuncio() {
       if (this.validarTelefono() === true && this.validarAnuncio() === true) {
         if (this.imagenes2.length > 0){
-          try {
+          try {            
             this.anuncio.fecha = new Date();
             const query = await db.collection("anuncios").add(this.anuncio);
             this.id_anuncio = query.id;

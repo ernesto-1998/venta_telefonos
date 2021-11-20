@@ -81,9 +81,10 @@ export default {
       visible: false,
       anuncios: [],
       foto: null,
+      // fecha: "",
       textoNavbar: "",
       filtrarPrecio: null,
-      filtrarFecha: true,
+      filtrarFecha: null,
       filtrarDesde: "",
       filtrarHasta: "",
       filtrosMarcas: [],
@@ -108,7 +109,6 @@ export default {
       try {
         const data = await db.collection('anuncios').get()
         for(const documentos of data.docs) {
-          
           let anuncio = {
             id: documentos.id,
             nombre: documentos.data().nombre,
@@ -116,6 +116,7 @@ export default {
             telefonoContacto: documentos.data().telefonoContacto,
             titulo: documentos.data().titulo,
             descripcion: documentos.data().descripcion,
+            fecha: documentos.data().fecha === undefined ? "Hola" : documentos.data().fecha.toDate(),
             foto: await st.ref().child(documentos.id + "/" + "1").getDownloadURL(),
             telefono: {
               estado: documentos.data().telefono.estado,
@@ -127,8 +128,7 @@ export default {
               ram: documentos.data().telefono.ram,
             }
           }
-          this.anuncios.push(anuncio);          
-
+          this.anuncios.push(anuncio);         
         };
         this.visible = true;              
       } catch (error) {
@@ -160,12 +160,15 @@ export default {
         });      
       }  
 
+      // filtrar Precio
+
       if(this.filtrarPrecio === false){
         this.anunciosFiltrados = this.anunciosFiltrados.sort((p1, p2) => {
           if (p1.precio > p2.precio) {
+            this.filtrarFecha = null;            
             return 1;
           }
-          if (p1.precio < p2.precio) {
+          if (p1.precio < p2.precio) {            
             return -1;
           }
           return 0;
@@ -181,6 +184,31 @@ export default {
           return 0;
         });        
       }
+
+      // filtrar Fecha
+
+      if(this.filtrarFecha === false){
+        console.log("entro a filtrar fecha")
+        this.anunciosFiltrados = this.anunciosFiltrados.sort((p1, p2) => {
+          if (p1.fecha > p2.fecha) {
+            return 1;
+          }
+          if (p1.fecha < p2.fecha) {
+            return -1;
+          }
+          return 0;
+        }); 
+      } else if(this.filtrarFecha === true){
+        this.anunciosFiltrados = this.anunciosFiltrados.sort((p1, p2) => {
+          if (p2.fecha > p1.fecha) {
+            return 1;
+          }
+          if (p2.fecha < p1.fecha) {
+            return -1;
+          }
+          return 0;
+        });        
+      }      
 
       // Filtrar Desde Hasta
 
@@ -321,10 +349,13 @@ export default {
   mounted(){
     bus.$on("filtrarPrecio", ()=>{
       this.filtrarPrecio = !this.filtrarPrecio
+      this.filtrarFecha = null;
       this.filtrarAnuncios();
     }),
     bus.$on("filtrarFecha", ()=>{
       this.filtrarFecha = !this.filtrarFecha
+      this.filtrarPrecio = null;
+      this.filtrarAnuncios();
     }),
     bus.$on("buscarCard", (data) => {
       this.textoNavbar = data;
