@@ -29,14 +29,18 @@
               <card :anuncio="anuncio"/>
             </div>
           </div>
-          <div class="row d-flex justify-content-center">
-            <div class="col mt-2">
+          <div class="row">
+            <div class="col-12 col-md-6 mt-3 d-flex justify-content-center">
               <b-pagination
                 v-model="paginaActual"
                 :total-rows="numeroPaginas"
                 :per-page="1"
                 @input="cambioPagina"               
               ></b-pagination>              
+            </div>
+            <div class="col mt-3 d-none d-md-block">
+              <label>Articulos por página</label>                 
+              <b-form-select v-model="anunciosPorPagina" @input="cambiarSelect" :options="options" class="mt-3 ms-2"></b-form-select>
             </div>
           </div>
         </div>
@@ -79,11 +83,15 @@ export default {
       filtrosPantallas: [],
       estado: null,
       anunciosFiltrados: [],
-      anunciosPorPagina: 4,
+      anunciosPorPagina: 8,
       anunciosPaginados: [],
-      totalAnuncios: 0,
       paginaActual: 1,
       numeroPaginas: 0,
+      options:[
+          { value: 4, text: '4' },
+          { value: 8, text: '8' },
+          { value: 16, text: '16' }
+      ]
     };
   },
   methods:{
@@ -120,11 +128,17 @@ export default {
     },
 
     cambioPagina() {
-      console.log("entro al cambioPagina")
       this.anunciosPaginados = this.anunciosFiltrados.slice(
         this.paginaActual * this.anunciosPorPagina - this.anunciosPorPagina,
         this.paginaActual * this.anunciosPorPagina
       );
+    },
+
+    cambiarSelect(){
+      this.paginaActual = 1;
+      this.total = this.anunciosFiltrados.length;
+      this.numeroPaginas = Math.ceil(this.total / this.anunciosPorPagina);
+      this.anunciosPaginados = this.anunciosFiltrados.slice(0, this.anunciosPorPagina);
     },
 
     filtrarAnuncios(){
@@ -285,11 +299,9 @@ export default {
 
       this.paginaActual = 1;
       this.total = this.anunciosFiltrados.length;
-      console.log(this.total)
       this.numeroPaginas = Math.ceil(this.total / this.anunciosPorPagina);
-      console.log(this.numeroPaginas)
       this.anunciosPaginados = this.anunciosFiltrados.slice(0, this.anunciosPorPagina);   
-      console.log(this.anunciosPaginados)   
+     
 
 
     }
