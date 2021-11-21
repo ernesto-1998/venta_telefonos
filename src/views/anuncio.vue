@@ -5,7 +5,7 @@
                 <carouselAnuncio :imagenes="imagenes" />
             </div>
             <div class="col mt-3">
-
+                <anuncioInfo :info="anuncio2" />
             </div>
         </div>
         <div class="row">
@@ -20,17 +20,18 @@
 </template>
 <script>
 import carouselAnuncio from '../components/anuncio/carouselAnuncio.vue'
+import anuncioInfo from '../components/anuncio/anuncioInfo.vue'
 import {db, st} from '../firebase'
 
 export default {
     name: 'anuncio',
     components:{
-        carouselAnuncio
+        carouselAnuncio,
+        anuncioInfo
     },
     data(){
         return{
             imagenes: [],
-            anuncio2: "",
             id: this.$router.currentRoute.params.id,
             anuncio: {
                 id: "",
@@ -61,7 +62,10 @@ export default {
         async traerDatos(){
             try {
                 await Promise.allSettled([
-                    this.anuncio2 = db.collection('anuncios/').doc(this.id).get(),
+                    db.collection('anuncios/').doc(this.id).get().then(doc => {
+                        this.anuncio2 = doc.data();
+                        console.log(this.anuncio2)
+                    }),
                      st.ref().child(this.id).listAll().then(res => {
                          res.items.forEach(img => {
                              img.getDownloadURL().then(i => {
