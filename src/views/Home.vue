@@ -116,11 +116,11 @@ export default {
             telefonoContacto: documentos.data().telefonoContacto,
             titulo: documentos.data().titulo,
             descripcion: documentos.data().descripcion,
-            fecha: documentos.data().fecha === undefined ? "Hola" : documentos.data().fecha.toDate(),
+            fecha: documentos.data().fecha === undefined ? "" : documentos.data().fecha.toDate(),
             foto: await st.ref().child(documentos.id + "/" + "1").getDownloadURL(),
             telefono: {
               estado: documentos.data().telefono.estado,
-              marca: documentos.data().telefono.marca.toLowerCase(),
+              marca: documentos.data().telefono.marca,
               sistema: documentos.data().telefono.sistema,
               modelo: documentos.data().telefono.modelo,
               pantalla: parseFloat(documentos.data().telefono.pantalla),
