@@ -1,10 +1,10 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col">
-
+            <div class="col mt-3">
+                <carouselAnuncio :imagenes="imagenes" />
             </div>
-            <div class="col">
+            <div class="col mt-3">
 
             </div>
         </div>
@@ -20,6 +20,7 @@
 </template>
 <script>
 import carouselAnuncio from '../components/anuncio/carouselAnuncio.vue'
+import {db, st} from '../firebase'
 
 export default {
     name: 'anuncio',
@@ -29,6 +30,8 @@ export default {
     data(){
         return{
             imagenes: [],
+            anuncio2: "",
+            id: this.$router.currentRoute.params.id,
             anuncio: {
                 id: "",
                 nombre: "",
@@ -49,9 +52,31 @@ export default {
                 }
             }
         };
+    },
+    created(){
+        this.traerDatos();
+    },
+
+    methods:{
+        async traerDatos(){
+            try {
+                await Promise.allSettled([
+                    this.anuncio2 = db.collection('anuncios/').doc(this.id).get(),
+                     st.ref().child(this.id).listAll().then(res => {
+                         res.items.forEach(img => {
+                             img.getDownloadURL().then(i => {
+                                 this.imagenes.push(i)
+                             })
+                         })
+                     }),
+                ]);                
+            } catch (error) {
+                console.log(error)
+            }
+        }
     }
 }
 </script>
-<style lang="">
+<style scoped>
     
 </style>

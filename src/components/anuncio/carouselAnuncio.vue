@@ -5,6 +5,11 @@
       class="carousel slide"
       data-bs-ride="carousel"
     >
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
       <div class="carousel-inner">
         <div
           v-for="(img, index) in imagenes"
@@ -12,7 +17,7 @@
           class="carousel-item"
           :class="{ active: index == 0 }"
         >
-          <img :src="img" class="d-block w-100" height="200px" alt="..." />
+          <img :src="img" class="d-block w-100" height="300px" alt="..." />
         </div>
       </div>
       <button
