@@ -187,8 +187,7 @@ export default {
 
       // filtrar Fecha
 
-      if(this.filtrarFecha === false){
-        console.log("entro a filtrar fecha")
+      if(this.filtrarFecha === true){
         this.anunciosFiltrados = this.anunciosFiltrados.sort((p1, p2) => {
           if (p1.fecha > p2.fecha) {
             return 1;
@@ -198,7 +197,7 @@ export default {
           }
           return 0;
         }); 
-      } else if(this.filtrarFecha === true){
+      } else if(this.filtrarFecha === false){
         this.anunciosFiltrados = this.anunciosFiltrados.sort((p1, p2) => {
           if (p2.fecha > p1.fecha) {
             return 1;
@@ -348,13 +347,13 @@ export default {
 
   mounted(){
     bus.$on("filtrarPrecio", ()=>{
-      this.filtrarPrecio = !this.filtrarPrecio
       this.filtrarFecha = null;
+      this.filtrarPrecio = !this.filtrarPrecio
       this.filtrarAnuncios();
     }),
     bus.$on("filtrarFecha", ()=>{
+      this.filtrarPrecio = null;      
       this.filtrarFecha = !this.filtrarFecha
-      this.filtrarPrecio = null;
       this.filtrarAnuncios();
     }),
     bus.$on("buscarCard", (data) => {
