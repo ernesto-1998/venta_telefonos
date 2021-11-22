@@ -60,7 +60,7 @@ export default {
 <style scoped>
     .color-fondo-interno{
         background-color: #EDDAA2;
-        border: 10px ridge #ffcc55;
+        border: 10px ridge #EDDAA2;
         border-radius: 25px;
     }
 </style>

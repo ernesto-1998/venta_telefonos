@@ -246,7 +246,7 @@ export default {
   }
 
   .color-fondo-interno{
-    background-color: #ffcc55;
-    border: 10px ridge #ffcc55;
+    background-color: #EDDAA2;
+    border: 10px ridge #EDDAA2;
   }
 </style>

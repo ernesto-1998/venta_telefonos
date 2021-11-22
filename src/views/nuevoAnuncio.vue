@@ -350,7 +350,7 @@
               <div class="col col-md-6">
                 <div
                   class="card text-center"
-                  style="background-color: #ffcc55; border: 10px ridge #ffcc55"
+                  style="background-color: #EDDAA2; border: 10px ridge #EDDAA2"
                 >
                   <div class="card-header border-bottom border-dark">
                     <b>Precio</b>
@@ -571,7 +571,7 @@ export default {
 </script>
 <style scoped>
   .color-fondo {
-    background-color: #ffcc35;
-    border: 10px ridge #ffcc25;
+    background-color: #FFBD00;
+    border: 10px ridge #FFBD00;
   }
 </style>

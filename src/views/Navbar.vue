@@ -11,17 +11,17 @@
           style="border-radius: 50px; width: 300px"
         />
 
-        <router-link :to="{name : 'Home'}" class="btn border border-3 border-dark mx-3" style="background-color: #ffcc30">
+        <router-link :to="{name : 'Home'}" class="btn border border-3 border-dark mx-3" style="background-color: #FFAA00">
           <b>Inicio</b>
         </router-link>
         
-        <a href="#" class="btn border border-3 border-dark mx-2" style="background-color: #ffcc30"
+        <a href="#" class="btn border border-3 border-dark mx-2" style="background-color: #FFAA00"
           ><b>Estadísticas</b></a
         >
         <router-link :to="{name : 'nuevoAnuncio'}">
           <i
             class="bi bi-plus-circle ms-5"
-            style="font-size: 3rem; color: black"
+            style="font-size: 3rem; color: black; background-color: #FFAA00; border-radius: 30px;"
           ></i>          
         </router-link>
         <a href="#">
@@ -103,7 +103,7 @@ export default {
 
 <style scoped>
   .color-fondo{
-    background-color: #ffcc35; 
-    border: 10px ridge #ffcc25;
+    background-color: #FFBD00; 
+    border: 10px ridge #FFBD00;
   }
 </style>

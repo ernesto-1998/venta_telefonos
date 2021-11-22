@@ -34,7 +34,7 @@
                         <a @click="cargarImagen()">
                         <i
                             class="bi bi-plus-circle"
-                            style="font-size: 4rem; color: black"
+                            style="font-size: 4rem; color: black;"
                         ></i>
                         </a>                    
                     </div>
