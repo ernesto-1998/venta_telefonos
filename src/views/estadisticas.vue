@@ -2,7 +2,7 @@
     <div class="container-fluid ps-3">
         <div class="row">
             <div class="col mt-3">
-                <apexchart width="500" type="bar" :options="options" :series="series"></apexchart>
+                <apexchart ref="realtimeChart" type="bar" width="500" :options="options" :series="series"></apexchart>
             </div>
             <div class="col">
 
@@ -26,23 +26,26 @@ export default {
     data(){
         return {
             anuncios: [],
+            marcas: [0,0,0,0,0],
             options: {
                 chart: {
                     id: 'vuechart-example'
                 },
                 xaxis: {
-                    categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+                    categories: ["samsung", "iphone", "huawei", "nokia", "xiaomi"]
                 }
             },
             series: [{
-                name: 'series-1',
-                data: [30, 40, 45, 50, 49, 60, 70, 91]
+                name: 'marcas',
+                data: [3,5,4,8,9]
             }]
         }
     },
-    created(){
-        this.traerDatos();
+    async created(){
+        await this.traerDatos();
+        this.contarMarcas();
     },
+
     methods:{
         async traerDatos(){
             try {
@@ -69,9 +72,32 @@ export default {
                     }
                     this.anuncios.push(anuncio);
                 }
+                this.contarMarcas();                
             } catch (error) {
                 console.log(error)
             }
+        },
+        contarMarcas(){
+            for(const marca of this.anuncios){
+                if(marca.telefono.marca.toLowerCase() === "samsung"){
+                    this.marcas[0] += 1
+                }else if(marca.telefono.marca.toLowerCase() === "iphone"){
+                    this.marcas[1] += 1
+                }else if(marca.telefono.marca.toLowerCase() === "huawei"){
+                    this.marcas[2] += 1
+                }else if(marca.telefono.marca.toLowerCase() === "nokia"){
+                    this.marcas[3] += 1
+                }else if(marca.telefono.marca.toLowerCase() === "xiaomi"){
+                    this.marcas[4] += 1
+                }
+            }
+            this.series[0].data = []
+            this.series[0].data.push(this.marcas[0])
+            this.series[0].data.push(this.marcas[1])
+            this.series[0].data.push(this.marcas[2])
+            this.series[0].data.push(this.marcas[3])
+            this.series[0].data.push(this.marcas[4])
+            console.log(this.series[0].data)
         }
     }
 }

@@ -81,7 +81,6 @@ export default {
       visible: false,
       anuncios: [],
       foto: null,
-      // fecha: "",
       textoNavbar: "",
       filtrarPrecio: null,
       filtrarFecha: null,
