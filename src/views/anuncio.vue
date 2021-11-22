@@ -1,5 +1,5 @@
 <template>
-  <div class="container" v-if="visible === true">
+  <div class="container">
     <div class="row">
       <div class="col-md-6 col-sm-12 mt-3">
         <carouselAnuncio :imagenes="imagenes" />
