@@ -1,5 +1,5 @@
 <template>
-    <div class="card color-fondo-interno" style="height: 100%;">
+    <div class="card color-fondo-interno" style="height: 100%; border-radius: 25px;">
         <div class="container">
             <div class="row d-flex justify-content-around">
                 <div class="col my-2">
@@ -45,7 +45,7 @@ export default {
 </script>
 <style scoped>
     .color-fondo-interno{
-        background-color: #ffcc55;
+        background-color: #EDDAA2;
         border: 10px ridge #ffcc55;
     }
 

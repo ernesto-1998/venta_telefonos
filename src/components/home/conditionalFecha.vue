@@ -59,7 +59,8 @@ export default {
 </script>
 <style scoped>
     .color-fondo-interno{
-        background-color: #ffcc55;
+        background-color: #EDDAA2;
         border: 10px ridge #ffcc55;
+        border-radius: 25px;
     }
 </style>
