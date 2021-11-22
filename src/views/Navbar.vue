@@ -15,9 +15,9 @@
           <b>Inicio</b>
         </router-link>
         
-        <a href="#" class="btn border border-3 border-dark mx-2" style="background-color: #FFAA00"
-          ><b>Estadísticas</b></a
-        >
+        <router-link :to="{name : 'Estadisticas'}" class="btn border border-3 border-dark mx-3" style="background-color: #FFAA00">
+          <b>Estadísticas</b></router-link>
+        
         <router-link :to="{name : 'nuevoAnuncio'}">
           <i
             class="bi bi-plus-circle ms-5"
@@ -67,7 +67,7 @@
             <router-link :to="{name: 'nuevoAnuncio'}" class="nav-link"><b>Nuevo Anuncio</b></router-link>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link"><b>Estadisticas</b></a>
+             <router-link :to="{name: 'Estadisticas'}" class="nav-link"><b>Estadisticas</b></router-link>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link"><b>Carrito</b></a>
