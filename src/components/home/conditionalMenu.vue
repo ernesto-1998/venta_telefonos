@@ -240,9 +240,9 @@ export default {
 
 <style scoped>
   .color-fondo{
-    background-color: #ffcc35; 
+    background-color: #FFBD00; 
     height: 650px; 
-    border: 10px ridge #ffcc35;
+    border: 10px ridge #FFBD00;
   }
 
   .color-fondo-interno{
