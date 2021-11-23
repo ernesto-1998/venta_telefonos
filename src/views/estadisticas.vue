@@ -2,17 +2,21 @@
     <div class="container-fluid ps-3">
         <div class="row">
             <div class="col-md-6 col-sm-12 mt-4">
+                <h2><strong>Marcas más populares</strong></h2>
                 <apexchart type="bar" height="300" :options="options" :series="series"></apexchart>
             </div>
             <div class="col-md-6 col-sm-12 mt-4">
+                <h2><strong>Sistemas operativos más populares</strong></h2>
                 <apexchart  height="300" type="area" :options="options1" :series="series1"></apexchart>
             </div>
         </div>
         <div class="row">
-            <div class="col mt-4 d-flex justify-content-center">
-                <apexchart width="380" type="donut" :options="options2" :series="series2"></apexchart>
+            <div class="col mt-4">
+                <h2><strong>Tamaño de pantalla más populares</strong></h2>
+                <div class="d-flex justify-content-center">
+                    <apexchart width="380" type="donut" :options="options2" :series="series2"></apexchart>
+                </div>
             </div>
-
         </div>
     </div>
 </template>
@@ -60,7 +64,6 @@ export default {
         this.series1 = [{
             data: this.sistemas
         }]
-        console.log(this.pantallas)
         this.series2 = this.pantallas   
     },
 

@@ -20,6 +20,7 @@
       <div class="col mt-3">
         <textarea
           v-model="anuncio.descripcion"
+          disabled
           class="form-control"
           id="exampleFormControlTextarea1"
           rows="7"
