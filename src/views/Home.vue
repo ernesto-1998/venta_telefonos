@@ -51,7 +51,7 @@
     <!-- <img class="d-md-none" v-else src="https://i.gifer.com/D5Vu.gif" alt=""> -->
     <div class="row d-none d-md-block">
       <div class="col d-flex justify-content-center">
-        <img class="" src="https://cdn.dribbble.com/users/989157/screenshots/3939130/beer.gif" v-if="visible === false" alt="">
+        <img class="" src="../assets/beer.gif" v-if="visible === false" alt="">
       </div>
     </div>
   </div>
@@ -64,7 +64,6 @@ import conditionalFecha from '@/components/home/conditionalFecha'
 import card from '../components/home/card'
 import {db,st} from '../firebase'
 import {bus} from '../main'
-import swal from 'sweetalert'
 
 
 export default {

@@ -191,7 +191,7 @@
                       <span class="visually-hidden">Next</span>
                     </button>
                   </div>
-                  <img height="200" v-if="!renderizarCarousel()" src="https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482953.jpg" alt="">
+                  <img height="200" v-if="!renderizarCarousel()" src="../assets/NoImage.jpg" alt="">
                 </div>
 
                 <!-- COLUMNA 1 (BOTONES) -->
@@ -280,7 +280,7 @@
                       <span class="visually-hidden">Next</span>
                     </button>
                   </div>
-                  <img height="200" width="150" v-if="!renderizarCarousel()" src="https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482953.jpg" alt="">                  
+                  <img height="200" width="150" v-if="!renderizarCarousel()" src="../assets/NoImage.jpg" alt="">                  
                 </div>
               </div>
 
