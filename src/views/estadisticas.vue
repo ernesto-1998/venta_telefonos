@@ -9,12 +9,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
-                <!-- <apexchart width="380" type="donut" :options="options2" :series="series2"></apexchart> -->
+            <div class="col mt-4 d-flex justify-content-center">
+                <apexchart width="380" type="donut" :options="options2" :series="series2"></apexchart>
             </div>
-            <div class="col">
 
-            </div>
         </div>
     </div>
 </template>
@@ -28,6 +26,7 @@ export default {
             anuncios: [],
             marcas: [0,0,0,0,0],
             sistemas: [0,0,0,0],
+            pantallas: [0,0,0],
             options: {
                 chart: {
                     id: 'vuechart-example'
@@ -44,22 +43,25 @@ export default {
                     categories: ["Android", "Ios", "Windows", "Harmony OS"]
                 }
             },
-            // options2: {},
-            // series2: [],            
+            options2: {
+                labels: ['6', '5.5', '5']
+            },                       
             series: [],
-            series1: []
+            series1: [],
+            series2: [],
+            
         }
     },
     async created(){
         await this.traerDatos();
         this.series = [{
             data: this.marcas
-        }]
-        // console.log(this.sistemas)  
+        }]  
         this.series1 = [{
             data: this.sistemas
         }]
-        // this.series2 = this.sistemas    
+        console.log(this.pantallas)
+        this.series2 = this.pantallas   
     },
 
     methods:{
@@ -89,7 +91,8 @@ export default {
                     this.anuncios.push(anuncio);
                 }    
                 this.contarMarcas();
-                this.contarSistemas();          
+                this.contarSistemas();
+                this.contarPantallas();          
             } catch (error) {
                 console.log(error)
             }
@@ -120,6 +123,17 @@ export default {
                     this.sistemas[2] += 1
                 }else if(sistema.telefono.sistema === "harmonyos"){
                     this.sistemas[3] += 1
+                }
+            }            
+        },
+        contarPantallas(){
+            for(const pantalla of this.anuncios){
+                if(pantalla.telefono.pantalla >= 6.0){
+                    this.pantallas[0] += 1
+                }else if(pantalla.telefono.pantalla >= 5.5 && pantalla.telefono.pantalla < 6){
+                    this.pantallas[1] += 1
+                }else if(pantalla.telefono.pantalla < 5.5){
+                    this.pantallas[2] += 1
                 }
             }            
         }
