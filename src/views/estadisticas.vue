@@ -1,16 +1,16 @@
 <template>
     <div class="container-fluid ps-3">
         <div class="row">
-            <div class="col mt-3">
-                <apexchart ref="realtimeChart" type="bar" width="500" :options="options" :series="series"></apexchart>
+            <div class="col-md-6 col-sm-12 mt-4">
+                <apexchart type="bar" height="300" :options="options" :series="series"></apexchart>
             </div>
-            <div class="col">
-
+            <div class="col-md-6 col-sm-12 mt-4">
+                <apexchart  height="300" type="area" :options="options1" :series="series1"></apexchart>
             </div>
         </div>
         <div class="row">
             <div class="col">
-
+                <!-- <apexchart width="380" type="donut" :options="options2" :series="series2"></apexchart> -->
             </div>
             <div class="col">
 
@@ -27,6 +27,7 @@ export default {
         return {
             anuncios: [],
             marcas: [0,0,0,0,0],
+            sistemas: [0,0,0,0],
             options: {
                 chart: {
                     id: 'vuechart-example'
@@ -35,15 +36,30 @@ export default {
                     categories: ["samsung", "iphone", "huawei", "nokia", "xiaomi"]
                 }
             },
-            series: [{
-                name: 'marcas',
-                data: [3,5,4,8,9]
-            }]
+            options1: {
+                chart: {
+                    id: 'vuechart-example'
+                },
+                xaxis: {
+                    categories: ["Android", "Ios", "Windows", "Harmony OS"]
+                }
+            },
+            // options2: {},
+            // series2: [],            
+            series: [],
+            series1: []
         }
     },
     async created(){
         await this.traerDatos();
-        this.contarMarcas();
+        this.series = [{
+            data: this.marcas
+        }]
+        // console.log(this.sistemas)  
+        this.series1 = [{
+            data: this.sistemas
+        }]
+        // this.series2 = this.sistemas    
     },
 
     methods:{
@@ -71,8 +87,9 @@ export default {
                         }
                     }
                     this.anuncios.push(anuncio);
-                }
-                this.contarMarcas();                
+                }    
+                this.contarMarcas();
+                this.contarSistemas();          
             } catch (error) {
                 console.log(error)
             }
@@ -91,13 +108,20 @@ export default {
                     this.marcas[4] += 1
                 }
             }
-            this.series[0].data = []
-            this.series[0].data.push(this.marcas[0])
-            this.series[0].data.push(this.marcas[1])
-            this.series[0].data.push(this.marcas[2])
-            this.series[0].data.push(this.marcas[3])
-            this.series[0].data.push(this.marcas[4])
-            console.log(this.series[0].data)
+          
+        },
+        contarSistemas(){
+            for(const sistema of this.anuncios){
+                if(sistema.telefono.sistema === "android"){
+                    this.sistemas[0] += 1
+                }else if(sistema.telefono.sistema === "ios"){
+                    this.sistemas[1] += 1
+                }else if(sistema.telefono.sistema === "windows"){
+                    this.sistemas[2] += 1
+                }else if(sistema.telefono.sistema === "harmonyos"){
+                    this.sistemas[3] += 1
+                }
+            }            
         }
     }
 }
