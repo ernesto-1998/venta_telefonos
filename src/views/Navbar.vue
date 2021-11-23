@@ -4,12 +4,15 @@
       <div class="d-flex align-items-center justify-content-evenly">
         <i class="bi bi-megaphone-fill mx-3" style="font-size: 2rem"></i>
         <h4 class="pe-3"><b>Tienda Cellphone</b></h4>
-        <input
-          type="text"
-          v-model="texto"
-          class="mx-3 col-8"
-          style="border-radius: 50px; width: 300px"
-        />
+        <b-input-group
+          size="sm" 
+          style="width: 400px"        
+        >
+          <b-form-input v-model="texto"></b-form-input>
+          <b-input-group-append>
+            <b-button size="sm" text="Borrar" variant="danger" @click="limpiarTexto">Borrar</b-button>
+          </b-input-group-append>
+        </b-input-group>
 
         <router-link :to="{name : 'Home'}" class="btn border border-3 border-dark mx-3" style="background-color: #FFAA00">
           <b>Inicio</b>
@@ -92,6 +95,9 @@ export default {
     methods: {
         filtrarAnuncios(){
               bus.$emit('buscarCard', this.texto)
+        },
+        limpiarTexto(){
+          this.texto = ""
         }
     },
 
