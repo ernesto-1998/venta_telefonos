@@ -149,6 +149,7 @@ export default {
     },
 
     filtrarAnuncios(){
+      
       this.anunciosFiltrados = this.anuncios
 
       if (this.textoNavbar !== "") {
