@@ -5,12 +5,12 @@
         <i class="bi bi-megaphone-fill mx-3" style="font-size: 2rem"></i>
         <h4 class="pe-3"><b>Tienda Cellphone</b></h4>
         <b-input-group
-          size="sm" 
-          style="width: 400px"        
+          size="md" 
+          style="width: 450px"        
         >
           <b-form-input v-model="texto"></b-form-input>
           <b-input-group-append>
-            <b-button size="sm" text="Borrar" variant="danger" @click="limpiarTexto">Borrar</b-button>
+            <b-button size="md" text="Borrar" variant="danger" @click="limpiarTexto">Borrar</b-button>
           </b-input-group-append>
         </b-input-group>
 

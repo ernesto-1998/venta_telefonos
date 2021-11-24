@@ -104,7 +104,7 @@ export default {
             for(const marca of this.anuncios){
                 if(marca.telefono.marca.toLowerCase() === "samsung"){
                     this.marcas[0] += 1
-                }else if(marca.telefono.marca.toLowerCase() === "iphone"){
+                }else if(marca.telefono.sistema === "ios"){
                     this.marcas[1] += 1
                 }else if(marca.telefono.marca.toLowerCase() === "huawei"){
                     this.marcas[2] += 1
