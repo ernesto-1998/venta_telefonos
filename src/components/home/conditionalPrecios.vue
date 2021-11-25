@@ -5,12 +5,12 @@
                 <div class="col my-2 d-flex align-items-center">
                     <label for="" class="me-2"> <b> Desde: </b>  </label>
                     <input style="width: 100px" type="text" maxlength="5" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" v-model="desde">
-                    <a @click="limpiarDesde"><i class="bi bi-x-circle-fill" style="font-size: 2rem; color: red; border-radius: 30px;"></i></a>
+                    <a @click="limpiarDesde"><i class="bi bi-x-circle-fill" style="font-size: 2rem; color: #E83100; border-radius: 30px;"></i></a>
                 </div>
                 <div class="col my-2 d-flex align-items-center">
                     <label for="" class="me-2"> <b> Hasta: </b> </label>
                     <input style="width: 100px" type="text" maxlength="5" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" v-model="hasta">
-                    <a ><i @click="limpiarHasta" class="bi bi-x-circle-fill" style="font-size: 2rem; color: red; border-radius: 30px;"></i></a>
+                    <a ><i @click="limpiarHasta" class="bi bi-x-circle-fill" style="font-size: 2rem; color:  #E83100; border-radius: 30px;"></i></a>
                 </div>
             </div>
         </div>

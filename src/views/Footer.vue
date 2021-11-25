@@ -97,7 +97,7 @@
           <h6 class="text-uppercase fw-bold mb-4">
             Contact
           </h6>
-          <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+          <p><i class="fas fa-home me-3"></i> Santa Ana, El Salvador</p>
           <p>
             <i class="fas fa-envelope me-3"></i>
             info@example.com
