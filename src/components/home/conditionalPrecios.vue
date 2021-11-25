@@ -35,7 +35,7 @@ export default {
         },
         enviarHasta(){
             bus.$emit('enviarHasta', this.hasta)
-        },
+        }
         // limpiarDesde(){
         //     this.desde = ""
         // },
