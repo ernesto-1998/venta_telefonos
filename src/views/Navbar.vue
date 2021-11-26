@@ -4,7 +4,7 @@
       <div class="d-flex align-items-center justify-content-evenly">
         <i class="bi bi-megaphone-fill mx-3" style="font-size: 2rem"></i>
         <h4 class="pe-3"><b>Tienda Cellphone</b></h4>
-        <b-input-group
+        <!-- <b-input-group
           size="md" 
           style="width: 450px"        
         >
@@ -12,7 +12,17 @@
           <b-input-group-append>
             <b-button size="md" text="Borrar" variant="danger" @click="limpiarTexto">Borrar</b-button>
           </b-input-group-append>
-        </b-input-group>
+        </b-input-group> -->
+          <form class="d-flex">
+            <input
+              class="form-control me-2"
+              v-model="texto"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              style="border-radius: 25px; width: 450px"
+            />
+          </form>
 
         <router-link :to="{name : 'Home'}" class="btn border border-3 border-dark mx-3" style="background-color: #FFAA00">
           <b>Inicio</b>

@@ -477,10 +477,10 @@ export default {
             this.guardarImagenes(this.id_anuncio)
             swal({ title: "Anuncio Guardado!",
                   text: "El anuncio se ha guardado perfectamente!",
-                  icon: "success", timer: 2000, button: false, })
+                  icon: "success", timer: 2200, button: false, })
             setTimeout(() => {
               this.$router.push({name: 'Home'})
-            }, 2500)
+            }, 2200)
           } catch (error) {
             console.log(error)
           }

@@ -7,7 +7,8 @@
             <h1> <strong>$ </strong> <strong>{{info.precio}}</strong></h1>
         </div>
         <div class="col-12 mt-1">
-            <button class="btn btn-primary">Comprar</button>
+             <router-link :to="{name: 'Home'}" class="btn btn-danger d-md-none me-2">Cancelar</router-link>            
+            <button @click="telefonoComprado" class="btn btn-primary">Comprar</button>
         </div>
         <div class="col-12">
             <div class="card mt-3">
@@ -29,6 +30,16 @@ export default {
     name: 'anuncioInfo',
     props:{
         info: Object,
+    },
+    methods: {
+        telefonoComprado(){
+            swal({ title: "Telefono Comprado!",
+                  text: "Producto añadido al carrito de compras!",
+                  icon: "success", timer: 2200, button: false, })
+            setTimeout(() => {
+              this.$router.push({name: 'Home'})
+            }, 2200)            
+        }
     }
 }
 </script>

@@ -12,7 +12,7 @@
           class="carousel-item"
           :class="{ active: index == 0 }"
         >
-          <img :src="img" class="d-block w-100" height="300px" alt="..." />
+          <img :src="img" class="d-block w-100" height="320px" alt="..." />
         </div>
       </div>
       <button

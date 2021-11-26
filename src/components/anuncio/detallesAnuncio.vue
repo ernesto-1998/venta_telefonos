@@ -35,13 +35,13 @@
                 <strong>Rom: </strong>
             </div>
             <div class="col-8 d-flex justify-content-start">
-                {{info.telefono.rom}}
+                {{info.telefono.rom}} GB
             </div> 
             <div class="col-4 ps-4 d-flex justify-content-start">
                 <strong>RAM: </strong>
             </div>
             <div class="col-8 d-flex justify-content-start">
-                {{info.telefono.ram}}
+                {{info.telefono.ram}} GB
             </div>                                                
         </div>
     </div>
